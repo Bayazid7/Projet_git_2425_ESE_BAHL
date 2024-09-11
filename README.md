@@ -1,8 +1,11 @@
 # Projet_git_2425_ESE
 Projet_2024/2025
+### Membres du groupes
 <br>
 Bayazid BELKHIR
 <br>
 Hedia WERHENI
 <br>
-Hugo Devaux
+Hugo DEVAUX
+<br>
+Aliou LY
