@@ -1,7 +1,6 @@
 # Projet_git_2425_ESE
 Projet_2024/2025
-### Membres du groupes
-<br>
+## Membres du groupes
 Bayazid BELKHIR
 <br>
 Hedia WERHENI
