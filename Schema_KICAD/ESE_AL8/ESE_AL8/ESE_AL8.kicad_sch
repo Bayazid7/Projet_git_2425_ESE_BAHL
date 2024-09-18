@@ -3785,7 +3785,7 @@
 		(dnp no)
 		(uuid "0928eaf6-f1a6-4cc4-8f9d-c1dbe4acfdbc")
 		(property "Reference" "C108"
-			(at 82.55 95.25 0)
+			(at 82.042 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5685,7 +5685,7 @@
 		(dnp no)
 		(uuid "e020b372-07d3-4a73-8b9e-003aee9cb39a")
 		(property "Reference" "D102"
-			(at 54.61 158.75 0)
+			(at 53.848 165.354 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5693,7 +5693,7 @@
 			)
 		)
 		(property "Value" "LED_USER"
-			(at 60.96 158.75 0)
+			(at 54.61 166.878 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5942,6 +5942,44 @@
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6"
 					(reference "#PWR0102")
 					(unit 1)
+				)
+			)
+		)
+	)
+	(sheet
+		(at 184.15 21.59)
+		(size 48.26 30.48)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "e231d587-6aa9-4f63-9a73-c878b68e277e")
+		(property "Sheetname" "Schema architectural"
+			(at 184.15 20.8784 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "schema_architectural.kicad_sch"
+			(at 184.15 52.6546 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "ESE_AL8"
+				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6"
+					(page "4")
 				)
 			)
 		)

@@ -588,6 +588,10 @@
     [
       "f403419b-15e7-44f7-a652-fb424ff9de0d",
       "Alimentation"
+    ],
+    [
+      "e231d587-6aa9-4f63-9a73-c878b68e277e",
+      "Schema architectural"
     ]
   ],
   "text_variables": {}
