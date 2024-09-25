@@ -28,3 +28,5 @@ trame du YDLIDAR X4 se compose des éléments suivants :
 - Checksum (2 octets) : Pour vérifier l'intégrité des données
 <br>
 (Pour chaque point)
+
+RQ: Utiliser un struct pour les données reçues
