@@ -1026,6 +1026,179 @@
 				)
 			)
 		)
+		(symbol "Switch:SW_SPDT_321"
+			(pin_names
+				(offset 1) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "SW"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SW_SPDT_321"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 -10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Switch, single pole double throw"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "switch single-pole double-throw spdt ON-ON"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "SW_SPDT_321_0_1"
+				(circle
+					(center -2.032 0)
+					(radius 0.4572)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.651 0.254) (xy 1.651 2.286)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.032 -2.54)
+					(radius 0.4572)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.032 2.54)
+					(radius 0.4572)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "SW_SPDT_321_1_1"
+				(rectangle
+					(start -3.175 3.81)
+					(end 3.175 -3.81)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 5.08 -2.54 180)
+					(length 2.54)
+					(name "C"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 2.54 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "power:+3.3V"
 			(power)
 			(pin_names
@@ -1362,6 +1535,102 @@
 				)
 			)
 		)
+		(symbol "power:PWR_FLAG"
+			(power)
+			(pin_numbers hide)
+			(pin_names
+				(offset 0) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#FLG"
+				(at 0 1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "PWR_FLAG"
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Special symbol for telling ERC where power comes from"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "flag power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "PWR_FLAG_0_0"
+				(pin power_out line
+					(at 0 0 90)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+		)
 	)
 	(junction
 		(at 243.84 128.27)
@@ -1374,6 +1643,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "227fe76c-a9af-45ea-9cd6-3a15414d03c0")
+	)
+	(junction
+		(at 223.52 128.27)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "301c0b93-0800-4e22-8031-5ae7dda6c0ce")
 	)
 	(junction
 		(at 124.46 35.433)
@@ -1493,6 +1768,16 @@
 	)
 	(wire
 		(pts
+			(xy 223.52 128.27) (xy 224.79 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "21a741e3-1c08-4d39-ae53-21f5d23d9c17")
+	)
+	(wire
+		(pts
 			(xy 104.394 44.323) (xy 104.14 44.323)
 		)
 		(stroke
@@ -1573,7 +1858,7 @@
 	)
 	(wire
 		(pts
-			(xy 221.615 128.27) (xy 224.79 128.27)
+			(xy 221.615 128.27) (xy 223.52 128.27)
 		)
 		(stroke
 			(width 0)
@@ -1670,6 +1955,16 @@
 			(type default)
 		)
 		(uuid "76eed313-393a-4681-9c7c-b6a732ae647d")
+	)
+	(wire
+		(pts
+			(xy 44.45 39.37) (xy 44.45 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7ab0dc6c-24da-4be5-9984-0a5458d2f6b6")
 	)
 	(wire
 		(pts
@@ -1923,7 +2218,7 @@
 	)
 	(rectangle
 		(start 26.67 29.845)
-		(end 59.69 44.45)
+		(end 78.994 55.88)
 		(stroke
 			(width 0)
 			(type default)
@@ -1934,7 +2229,7 @@
 		(uuid 0a270457-2fdd-4d06-8101-6deca1600c75)
 	)
 	(rectangle
-		(start 210.947 112.522)
+		(start 201.93 112.522)
 		(end 253.619 153.416)
 		(stroke
 			(width 0)
@@ -2100,9 +2395,9 @@
 			)
 		)
 	)
-	(global_label "VIN"
+	(global_label "+7.2V"
 		(shape input)
-		(at 43.18 34.29 180)
+		(at 44.45 36.83 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2110,9 +2405,9 @@
 			)
 			(justify right)
 		)
-		(uuid "468ba24f-26b5-43b8-9f41-8a64cbfa9dd7")
+		(uuid "4253f116-c066-4514-b965-e83d3f34e3ae")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 37.1709 34.29 0)
+			(at 35.78 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2184,6 +2479,28 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "+7.2V"
+		(shape input)
+		(at 60.96 43.18 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "7c37ffe8-86bc-4bb2-ba9f-999f90fb0532")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 52.29 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -2342,6 +2659,28 @@
 			)
 		)
 	)
+	(global_label "VIN"
+		(shape input)
+		(at 71.12 45.72 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "dfb418ac-3920-47df-ab80-6df74a61067c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 77.1291 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(symbol
 		(lib_id "Device:C_Small")
 		(at 216.535 80.01 90)
@@ -2369,7 +2708,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 			(at 216.535 80.01 0)
 			(effects
 				(font
@@ -2421,7 +2760,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "062798f9-34b6-4759-9010-a9d92f39e630")
-		(property "Reference" "#PWR0310"
+		(property "Reference" "#PWR0311"
 			(at 226.06 83.82 0)
 			(effects
 				(font
@@ -2471,7 +2810,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/f403419b-15e7-44f7-a652-fb424ff9de0d"
-					(reference "#PWR0310")
+					(reference "#PWR0311")
 					(unit 1)
 				)
 			)
@@ -2502,7 +2841,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Inductor_SMD:L_0603_1608Metric_Pad1.05x0.95mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 			(at 199.39 42.545 0)
 			(effects
 				(font
@@ -2554,7 +2893,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1d476f04-3c1f-4c55-bf1b-f38b745f9181")
-		(property "Reference" "#PWR0312"
+		(property "Reference" "#PWR0313"
 			(at 243.84 139.7 0)
 			(effects
 				(font
@@ -2604,7 +2943,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/f403419b-15e7-44f7-a652-fb424ff9de0d"
-					(reference "#PWR0312")
+					(reference "#PWR0313")
 					(unit 1)
 				)
 			)
@@ -2689,7 +3028,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2902d07c-b951-4d0f-9d67-82727d0244c8")
-		(property "Reference" "#PWR0308"
+		(property "Reference" "#PWR0309"
 			(at 217.17 132.08 0)
 			(effects
 				(font
@@ -2739,7 +3078,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/f403419b-15e7-44f7-a652-fb424ff9de0d"
-					(reference "#PWR0308")
+					(reference "#PWR0309")
 					(unit 1)
 				)
 			)
@@ -2772,7 +3111,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 			(at 124.46 39.497 0)
 			(effects
 				(font
@@ -2824,7 +3163,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4263d7e0-6620-4fc4-b30f-49982acd7978")
-		(property "Reference" "#PWR0302"
+		(property "Reference" "#PWR0303"
 			(at 119.126 85.344 0)
 			(effects
 				(font
@@ -2874,7 +3213,143 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/f403419b-15e7-44f7-a652-fb424ff9de0d"
-					(reference "#PWR0302")
+					(reference "#PWR0303")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_SPDT_321")
+		(at 66.04 45.72 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4b6a074d-3c93-49fc-8175-6c32a0e17361")
+		(property "Reference" "SW301"
+			(at 66.04 40.894 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "ON/OFF"
+			(at 66.04 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "STM32:SWITCH TOGGLE SPDT 1A 30V"
+			(at 66.04 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 66.04 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Switch, single pole double throw"
+			(at 66.04 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "82d7cd28-e10e-4e60-a62f-d81d3316cbc7")
+		)
+		(pin "2"
+			(uuid "0a09ffee-98db-4689-a630-1e743bcc1019")
+		)
+		(pin "3"
+			(uuid "24b0ae36-d61a-4596-bccc-7a1038512e0a")
+		)
+		(instances
+			(project "ESE_AL8"
+				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/f403419b-15e7-44f7-a652-fb424ff9de0d"
+					(reference "SW301")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 223.52 128.27 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "53b23203-4c71-48b4-8888-dc55b1f08788")
+		(property "Reference" "#FLG0301"
+			(at 223.52 126.365 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 223.52 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 223.52 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 223.52 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 223.52 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8d4ebcc5-69f1-43b1-81dd-682e3086364a")
+		)
+		(instances
+			(project ""
+				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/f403419b-15e7-44f7-a652-fb424ff9de0d"
+					(reference "#FLG0301")
 					(unit 1)
 				)
 			)
@@ -2889,7 +3364,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "54beb2cf-06d8-4e06-a4cc-33c9b289f5b2")
-		(property "Reference" "#PWR0305"
+		(property "Reference" "#PWR0306"
 			(at 207.645 55.88 0)
 			(effects
 				(font
@@ -2939,7 +3414,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/f403419b-15e7-44f7-a652-fb424ff9de0d"
-					(reference "#PWR0305")
+					(reference "#PWR0306")
 					(unit 1)
 				)
 			)
@@ -2947,7 +3422,7 @@
 	)
 	(symbol
 		(lib_id "Connector:Screw_Terminal_01x02")
-		(at 48.26 34.29 0)
+		(at 49.53 36.83 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2956,7 +3431,7 @@
 		(fields_autoplaced yes)
 		(uuid "5b3e5673-0835-4fbf-8afa-28a8693abd9e")
 		(property "Reference" "J301"
-			(at 50.8 34.29 0)
+			(at 52.07 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2965,7 +3440,7 @@
 			)
 		)
 		(property "Value" "Batterie"
-			(at 50.8 36.83 0)
+			(at 52.07 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2974,7 +3449,7 @@
 			)
 		)
 		(property "Footprint" "Connector_JST:JST_EH_B2B-EH-A_1x02_P2.50mm_Vertical"
-			(at 48.26 34.29 0)
+			(at 49.53 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2983,7 +3458,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 48.26 34.29 0)
+			(at 49.53 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2992,7 +3467,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 48.26 34.29 0)
+			(at 49.53 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3024,7 +3499,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "5bcea5b5-f277-4bc6-93db-a2dc89b3e905")
-		(property "Reference" "#PWR0306"
+		(property "Reference" "#PWR0307"
 			(at 210.185 97.155 0)
 			(effects
 				(font
@@ -3074,7 +3549,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/f403419b-15e7-44f7-a652-fb424ff9de0d"
-					(reference "#PWR0306")
+					(reference "#PWR0307")
 					(unit 1)
 				)
 			)
@@ -3167,7 +3642,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6b6f5bc9-f5f9-44ac-abe8-576dad6fd588")
-		(property "Reference" "#PWR0303"
+		(property "Reference" "#PWR0304"
 			(at 119.38 49.53 0)
 			(effects
 				(font
@@ -3217,7 +3692,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/f403419b-15e7-44f7-a652-fb424ff9de0d"
-					(reference "#PWR0303")
+					(reference "#PWR0304")
 					(unit 1)
 				)
 			)
@@ -3225,7 +3700,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 43.18 36.83 0)
+		(at 44.45 44.45 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3234,7 +3709,7 @@
 		(fields_autoplaced yes)
 		(uuid "710e0809-37d7-47d7-a988-e3055ef085b8")
 		(property "Reference" "#PWR0301"
-			(at 43.18 43.18 0)
+			(at 44.45 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3243,7 +3718,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 43.18 41.91 0)
+			(at 44.45 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3251,7 +3726,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 43.18 36.83 0)
+			(at 44.45 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3260,7 +3735,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 43.18 36.83 0)
+			(at 44.45 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3269,7 +3744,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 43.18 36.83 0)
+			(at 44.45 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3314,7 +3789,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
 			(at 203.835 85.09 0)
 			(effects
 				(font
@@ -3381,7 +3856,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
 			(at 189.865 36.195 0)
 			(effects
 				(font
@@ -3450,7 +3925,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 			(at 192.405 40.005 0)
 			(effects
 				(font
@@ -3517,7 +3992,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
 			(at 219.71 85.09 0)
 			(effects
 				(font
@@ -3707,7 +4182,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8a97345e-297e-4e2a-a496-a82cd018ee8a")
-		(property "Reference" "#PWR0304"
+		(property "Reference" "#PWR0305"
 			(at 149.86 80.01 0)
 			(effects
 				(font
@@ -3757,7 +4232,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/f403419b-15e7-44f7-a652-fb424ff9de0d"
-					(reference "#PWR0304")
+					(reference "#PWR0305")
 					(unit 1)
 				)
 			)
@@ -3791,7 +4266,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 			(at 243.84 130.81 0)
 			(effects
 				(font
@@ -3843,7 +4318,7 @@
 		(dnp no)
 		(uuid "94c06990-8ff6-4320-ac9a-3b74597b1c9b")
 		(property "Reference" "C308"
-			(at 212.09 130.81 0)
+			(at 209.804 131.064 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3852,7 +4327,7 @@
 			)
 		)
 		(property "Value" "0.47u"
-			(at 210.82 132.715 0)
+			(at 209.804 133.096 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3860,7 +4335,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 			(at 217.17 130.81 0)
 			(effects
 				(font
@@ -3929,7 +4404,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
 			(at 109.22 77.47 0)
 			(effects
 				(font
@@ -3998,7 +4473,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
 			(at 104.394 40.005 0)
 			(effects
 				(font
@@ -4050,7 +4525,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "bab68746-fc5a-4ea6-b22a-5f232b1ddfe6")
-		(property "Reference" "#PWR0311"
+		(property "Reference" "#PWR0312"
 			(at 233.68 142.24 0)
 			(effects
 				(font
@@ -4100,7 +4575,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/f403419b-15e7-44f7-a652-fb424ff9de0d"
-					(reference "#PWR0311")
+					(reference "#PWR0312")
 					(unit 1)
 				)
 			)
@@ -4116,7 +4591,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c134377b-3857-4bf6-a65e-b8e532734c73")
-		(property "Reference" "#PWR0309"
+		(property "Reference" "#PWR0310"
 			(at 217.17 139.7 0)
 			(effects
 				(font
@@ -4166,7 +4641,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/f403419b-15e7-44f7-a652-fb424ff9de0d"
-					(reference "#PWR0309")
+					(reference "#PWR0310")
 					(unit 1)
 				)
 			)
@@ -4199,7 +4674,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
 			(at 210.185 88.265 0)
 			(effects
 				(font
@@ -4251,7 +4726,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "daa6885d-6128-43f4-926e-feb9187812ee")
-		(property "Reference" "#PWR0307"
+		(property "Reference" "#PWR0308"
 			(at 217.17 46.355 0)
 			(effects
 				(font
@@ -4301,7 +4776,73 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/f403419b-15e7-44f7-a652-fb424ff9de0d"
-					(reference "#PWR0307")
+					(reference "#PWR0308")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 60.96 48.26 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "dd565889-29ce-4331-865f-11008786097e")
+		(property "Reference" "#PWR0302"
+			(at 60.96 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 60.96 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 60.96 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 60.96 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 60.96 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9ac0d587-5c21-4ab8-beb4-431b5c80dbc0")
+		)
+		(instances
+			(project "ESE_AL8"
+				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/f403419b-15e7-44f7-a652-fb424ff9de0d"
+					(reference "#PWR0302")
 					(unit 1)
 				)
 			)
@@ -4472,7 +5013,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 			(at 119.126 76.454 0)
 			(effects
 				(font
@@ -4524,7 +5065,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f1a06568-dfac-4292-9281-eafc21359970")
-		(property "Reference" "#PWR0313"
+		(property "Reference" "#PWR0314"
 			(at 250.063 132.08 0)
 			(effects
 				(font
@@ -4574,7 +5115,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/f403419b-15e7-44f7-a652-fb424ff9de0d"
-					(reference "#PWR0313")
+					(reference "#PWR0314")
 					(unit 1)
 				)
 			)

@@ -131,6 +131,108 @@
 				)
 			)
 		)
+		(symbol "Connector:TestPoint"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.762) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "TP"
+				(at 0 6.858 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TestPoint"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "test point"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "test point tp"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Pin* Test*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "TestPoint_0_1"
+				(circle
+					(center 0 3.302)
+					(radius 0.762)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "TestPoint_1_1"
+				(pin passive line
+					(at 0 0 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "Connector_Generic:Conn_01x04"
 			(pin_names
 				(offset 1.016) hide)
@@ -2368,22 +2470,24 @@
 				)
 			)
 		)
-		(symbol "Switch:SW_SPDT"
+		(symbol "Switch:SW_Push"
+			(pin_numbers hide)
 			(pin_names
-				(offset 0) hide)
+				(offset 1.016) hide)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "SW"
-				(at 0 5.08 0)
+				(at 1.27 2.54 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left)
 				)
 			)
-			(property "Value" "SW_SPDT"
-				(at 0 -5.08 0)
+			(property "Value" "SW_Push"
+				(at 0 -1.524 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2391,7 +2495,7 @@
 				)
 			)
 			(property "Footprint" ""
-				(at 0 0 0)
+				(at 0 5.08 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2400,7 +2504,7 @@
 				)
 			)
 			(property "Datasheet" "~"
-				(at 0 -7.62 0)
+				(at 0 5.08 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2408,7 +2512,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Switch, single pole double throw"
+			(property "Description" "Push button switch, generic, two pins"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2417,7 +2521,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "switch single-pole double-throw spdt ON-ON"
+			(property "ki_keywords" "switch normally-open pushbutton push-button"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2426,10 +2530,10 @@
 					(hide yes)
 				)
 			)
-			(symbol "SW_SPDT_0_1"
+			(symbol "SW_Push_0_1"
 				(circle
 					(center -2.032 0)
-					(radius 0.4572)
+					(radius 0.508)
 					(stroke
 						(width 0)
 						(type default)
@@ -2440,7 +2544,19 @@
 				)
 				(polyline
 					(pts
-						(xy -1.651 0.254) (xy 1.651 2.286)
+						(xy 0 1.27) (xy 0 3.048)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 1.27) (xy -2.54 1.27)
 					)
 					(stroke
 						(width 0)
@@ -2451,44 +2567,20 @@
 					)
 				)
 				(circle
-					(center 2.032 -2.54)
-					(radius 0.4572)
+					(center 2.032 0)
+					(radius 0.508)
 					(stroke
 						(width 0)
 						(type default)
 					)
 					(fill
 						(type none)
-					)
-				)
-				(circle
-					(center 2.032 2.54)
-					(radius 0.4572)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "SW_SPDT_1_1"
-				(rectangle
-					(start -3.175 3.81)
-					(end 3.175 -3.81)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type background)
 					)
 				)
 				(pin passive line
-					(at 5.08 2.54 180)
+					(at -5.08 0 0)
 					(length 2.54)
-					(name "A"
+					(name "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2504,9 +2596,9 @@
 					)
 				)
 				(pin passive line
-					(at -5.08 0 0)
+					(at 5.08 0 180)
 					(length 2.54)
-					(name "B"
+					(name "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2514,24 +2606,6 @@
 						)
 					)
 					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 -2.54 180)
-					(length 2.54)
-					(name "C"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2877,6 +2951,102 @@
 				)
 			)
 		)
+		(symbol "power:PWR_FLAG"
+			(power)
+			(pin_numbers hide)
+			(pin_names
+				(offset 0) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#FLG"
+				(at 0 1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "PWR_FLAG"
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Special symbol for telling ERC where power comes from"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "flag power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "PWR_FLAG_0_0"
+				(pin power_out line
+					(at 0 0 90)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+		)
 	)
 	(junction
 		(at 60.96 52.07)
@@ -2889,6 +3059,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "2f50290a-3343-4fac-85a0-f5d0f5a8acd5")
+	)
+	(junction
+		(at 36.83 86.36)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3d376d15-3ec6-4745-8b6b-8c4cc91f7f1d")
 	)
 	(junction
 		(at 58.42 95.25)
@@ -2909,10 +3085,10 @@
 		(uuid "54ae5da4-50ed-48c0-b2c0-4bddfaf55a37")
 	)
 	(junction
-		(at 186.69 52.07)
+		(at 46.99 86.36)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "9d0b2d80-f83b-40bb-97a7-e540070db747")
+		(uuid "5c0a017c-0537-4e20-ab34-d064d990a806")
 	)
 	(junction
 		(at 59.69 57.15)
@@ -2933,10 +3109,22 @@
 		(uuid "b9512473-a725-47aa-b503-b40e7d4b3b4d")
 	)
 	(junction
+		(at 182.88 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c2a68f81-99a5-48af-b7a1-662e1727344e")
+	)
+	(junction
 		(at 49.53 43.18)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d1d604e5-0e50-4eb9-8299-5f0de9993c84")
+	)
+	(junction
+		(at 186.69 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e9a706e1-89e3-4099-b878-f434ebb8cbec")
 	)
 	(junction
 		(at 205.74 34.29)
@@ -3002,6 +3190,16 @@
 	)
 	(wire
 		(pts
+			(xy 46.99 85.09) (xy 46.99 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1ac3ff02-0cdc-4edb-b4f6-467bf87f76e2")
+	)
+	(wire
+		(pts
 			(xy 205.74 34.29) (xy 210.82 34.29)
 		)
 		(stroke
@@ -3029,6 +3227,16 @@
 			(type default)
 		)
 		(uuid "208a8ac7-3f4f-4e65-a623-5ba08caced9b")
+	)
+	(wire
+		(pts
+			(xy 179.07 52.07) (xy 182.88 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "260ca3f8-e698-418b-bfb0-056ae6cdc788")
 	)
 	(wire
 		(pts
@@ -3162,6 +3370,16 @@
 	)
 	(wire
 		(pts
+			(xy 36.83 86.36) (xy 41.91 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5e9591d3-a095-4b3e-94f3-b8e743486fee")
+	)
+	(wire
+		(pts
 			(xy 186.69 64.77) (xy 186.69 67.31)
 		)
 		(stroke
@@ -3192,13 +3410,23 @@
 	)
 	(wire
 		(pts
-			(xy 30.48 86.36) (xy 41.91 86.36)
+			(xy 30.48 86.36) (xy 36.83 86.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "6bdc2e30-a7fc-4e15-9a8a-467c571a1a5a")
+	)
+	(wire
+		(pts
+			(xy 123.19 110.49) (xy 125.73 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6cf61be3-5a1d-40af-8fae-7ca4933c377f")
 	)
 	(wire
 		(pts
@@ -3252,6 +3480,16 @@
 	)
 	(wire
 		(pts
+			(xy 111.76 110.49) (xy 113.03 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "912c6214-a855-4a40-ac9c-a411f4ce90eb")
+	)
+	(wire
+		(pts
 			(xy 36.83 52.07) (xy 33.02 52.07)
 		)
 		(stroke
@@ -3279,6 +3517,16 @@
 			(type default)
 		)
 		(uuid "9d365c8e-bc2f-4485-8c94-2d60dd5a4270")
+	)
+	(wire
+		(pts
+			(xy 182.88 52.07) (xy 186.69 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b6b36320-9a23-4957-b911-16932aa8c086")
 	)
 	(wire
 		(pts
@@ -3771,7 +4019,7 @@
 			)
 		)
 	)
-	(global_label "CB_IN3"
+	(global_label "CB_IN"
 		(shape input)
 		(at 204.47 100.33 180)
 		(fields_autoplaced yes)
@@ -3784,7 +4032,7 @@
 		)
 		(uuid "3f497925-a900-4a75-b76d-940093575b9a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 194.3564 100.33 0)
+			(at 195.5659 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3796,7 +4044,7 @@
 	)
 	(global_label "CHAT{slash}SOURIS"
 		(shape input)
-		(at 113.03 110.49 180)
+		(at 111.76 110.49 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3807,7 +4055,7 @@
 		)
 		(uuid "403650bc-6fd3-4674-82df-98b73fce2cd2")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 96.6268 110.49 0)
+			(at 95.3568 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3840,7 +4088,7 @@
 			)
 		)
 	)
-	(global_label "RX2_JTAG"
+	(global_label "RX_SWD"
 		(shape input)
 		(at 106.68 50.8 180)
 		(fields_autoplaced yes)
@@ -3853,7 +4101,7 @@
 		)
 		(uuid "4cd341af-439c-4c9c-bd37-d8474e4da597")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 94.2684 50.8 0)
+			(at 95.8408 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4228,7 +4476,7 @@
 			)
 		)
 	)
-	(global_label "CB_IN2"
+	(global_label "CB_IN"
 		(shape input)
 		(at 180.34 113.03 180)
 		(fields_autoplaced yes)
@@ -4241,7 +4489,7 @@
 		)
 		(uuid "91803aa5-cf08-4bfa-9141-1db5d1ae0c74")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 170.2264 113.03 0)
+			(at 171.4359 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4273,7 +4521,7 @@
 			)
 		)
 	)
-	(global_label "CB_IN4"
+	(global_label "CB_IN"
 		(shape input)
 		(at 204.47 113.03 180)
 		(fields_autoplaced yes)
@@ -4286,7 +4534,7 @@
 		)
 		(uuid "ace6962d-da98-4d02-b459-baee49fcd62d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 194.3564 113.03 0)
+			(at 195.5659 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4319,7 +4567,7 @@
 			)
 		)
 	)
-	(global_label "CB_IN1"
+	(global_label "CB_IN"
 		(shape input)
 		(at 180.34 100.33 180)
 		(fields_autoplaced yes)
@@ -4332,7 +4580,7 @@
 		)
 		(uuid "cfb111af-5eb0-49eb-bec8-a676b52a21fc")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 170.2264 100.33 0)
+			(at 171.4359 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4457,7 +4705,7 @@
 			)
 		)
 	)
-	(global_label "TX2_JTAG"
+	(global_label "TX_SWD"
 		(shape input)
 		(at 134.62 50.8 0)
 		(fields_autoplaced yes)
@@ -4470,7 +4718,7 @@
 		)
 		(uuid "ec0462b3-134d-4837-abf7-fb4a86db47b3")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 146.7292 50.8 0)
+			(at 145.1568 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4609,73 +4857,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 182.88 52.07 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "0c9f18eb-2f21-4788-9b1f-e35f1720a41f")
-		(property "Reference" "JP203"
-			(at 181.356 47.244 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "TestSDA"
-			(at 181.102 49.276 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 182.88 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 182.88 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 182.88 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "167aa2eb-fe5e-4324-9acf-3eb4dce6aea0")
-		)
-		(pin "2"
-			(uuid "60b7e283-1ed6-4804-81d1-a1d62fa83322")
-		)
-		(instances
-			(project "ESE_AL8"
-				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "JP203")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 59.69 62.23 0)
 		(unit 1)
@@ -4685,7 +4866,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0d4526fb-e092-47d8-81a6-2b924c9eaed7")
-		(property "Reference" "#PWR0208"
+		(property "Reference" "#PWR0209"
 			(at 59.69 68.58 0)
 			(effects
 				(font
@@ -4735,7 +4916,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "#PWR0208")
+					(reference "#PWR0209")
 					(unit 1)
 				)
 			)
@@ -4819,7 +5000,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1668637e-15bc-48eb-bb7d-fee66696bb4b")
-		(property "Reference" "#PWR0213"
+		(property "Reference" "#PWR0214"
 			(at 107.95 40.64 0)
 			(effects
 				(font
@@ -4870,7 +5051,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "#PWR0213")
+					(reference "#PWR0214")
 					(unit 1)
 				)
 			)
@@ -4886,7 +5067,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1d3fe89d-928e-4d73-a1b5-f727098dfdc3")
-		(property "Reference" "#PWR0210"
+		(property "Reference" "#PWR0211"
 			(at 105.41 139.7 0)
 			(effects
 				(font
@@ -4937,7 +5118,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "#PWR0210")
+					(reference "#PWR0211")
 					(unit 1)
 				)
 			)
@@ -5035,7 +5216,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm"
 			(at 130.81 50.8 0)
 			(effects
 				(font
@@ -5156,7 +5337,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2706ba87-03f6-4103-843c-2f095acaa335")
-		(property "Reference" "#PWR0217"
+		(property "Reference" "#PWR0218"
 			(at 119.38 167.64 0)
 			(effects
 				(font
@@ -5207,7 +5388,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "#PWR0217")
+					(reference "#PWR0218")
 					(unit 1)
 				)
 			)
@@ -5224,7 +5405,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "29c07014-aa5a-467d-8225-a34ca0bfa14a")
-		(property "Reference" "C208"
+		(property "Reference" "C209"
 			(at 193.04 35.5663 0)
 			(effects
 				(font
@@ -5242,7 +5423,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 			(at 190.5 36.83 0)
 			(effects
 				(font
@@ -5278,7 +5459,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "C208")
+					(reference "C209")
 					(unit 1)
 				)
 			)
@@ -5362,7 +5543,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2f928cfb-e8ef-4f0f-bffa-b95f1126fbd2")
-		(property "Reference" "#PWR0211"
+		(property "Reference" "#PWR0212"
 			(at 105.41 160.02 0)
 			(effects
 				(font
@@ -5413,7 +5594,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "#PWR0211")
+					(reference "#PWR0212")
 					(unit 1)
 				)
 			)
@@ -5496,7 +5677,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "312a2f96-ab73-4dc5-bc13-f2e8a7961969")
-		(property "Reference" "#PWR0207"
+		(property "Reference" "#PWR0208"
 			(at 58.42 83.82 0)
 			(effects
 				(font
@@ -5546,7 +5727,75 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "#PWR0207")
+					(reference "#PWR0208")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_Push")
+		(at 118.11 110.49 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3336a7f9-2d02-4a54-97d8-8744dd3e2984")
+		(property "Reference" "SW201"
+			(at 118.11 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_c/s"
+			(at 118.11 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H9.5mm"
+			(at 118.11 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 118.11 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Push button switch, generic, two pins"
+			(at 118.11 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "19c110f8-4391-4917-a0f5-9f19cc41b9aa")
+		)
+		(pin "2"
+			(uuid "1c5554ab-42df-40e2-9d89-1bc317ebb05c")
+		)
+		(instances
+			(project ""
+				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
+					(reference "SW201")
 					(unit 1)
 				)
 			)
@@ -5579,7 +5828,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
 			(at 179.07 62.23 0)
 			(effects
 				(font
@@ -5631,7 +5880,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "38713b24-707c-4ce0-b1b3-46fd6dc293b2")
-		(property "Reference" "#PWR0209"
+		(property "Reference" "#PWR0210"
 			(at 60.96 40.64 0)
 			(effects
 				(font
@@ -5681,7 +5930,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "#PWR0209")
+					(reference "#PWR0210")
 					(unit 1)
 				)
 			)
@@ -5758,6 +6007,71 @@
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
 					(reference "J208")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 125.73 110.49 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "403bcc3f-4457-4856-855e-ceb8ceac2aec")
+		(property "Reference" "#PWR0221"
+			(at 125.73 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 129.032 112.776 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 125.73 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 125.73 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 125.73 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7aae6aba-8e11-4bc4-acae-0fa3696ff76c")
+		)
+		(instances
+			(project "ESE_AL8"
+				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
+					(reference "#PWR0221")
 					(unit 1)
 				)
 			)
@@ -6095,7 +6409,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "441a9598-e014-483f-8195-c28843147764")
-		(property "Reference" "#PWR0215"
+		(property "Reference" "#PWR0216"
 			(at 107.95 48.26 0)
 			(effects
 				(font
@@ -6146,7 +6460,76 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "#PWR0215")
+					(reference "#PWR0216")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 46.99 82.55 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "445df76d-b6d0-42fe-a73b-afd7563995be")
+		(property "Reference" "C203"
+			(at 49.53 81.2863 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10u"
+			(at 50.038 83.058 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+			(at 46.99 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 46.99 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 46.99 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9fa9321a-a5d6-4557-b369-469d1c22b2a2")
+		)
+		(pin "2"
+			(uuid "f4666a3e-1636-4bb7-a8f2-8e610c25661c")
+		)
+		(instances
+			(project "ESE_AL8"
+				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
+					(reference "C203")
 					(unit 1)
 				)
 			)
@@ -6257,73 +6640,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 110.49 50.8 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "5358764e-b903-41ab-9365-895c177c8379")
-		(property "Reference" "JP201"
-			(at 110.49 52.832 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "TestRX"
-			(at 110.236 54.356 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 110.49 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 110.49 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 110.49 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "1b89d50c-06a7-49b1-9ec7-16b0df0c7a16")
-		)
-		(pin "2"
-			(uuid "a270c959-90ff-4247-9fe9-383e4fd787a0")
-		)
-		(instances
-			(project ""
-				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "JP201")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Driver_Motor:ZXBM5210-SP")
 		(at 46.99 54.61 0)
 		(unit 1)
@@ -6414,6 +6730,73 @@
 		)
 	)
 	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 110.49 50.8 180)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "6125015a-e9fd-4eba-bd1e-8de41c543aec")
+		(property "Reference" "JP201"
+			(at 110.49 52.832 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TestRX"
+			(at 110.49 54.356 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm"
+			(at 110.49 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 110.49 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 110.49 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "38d71403-22b6-4c8b-b6bb-5665f5033108")
+		)
+		(pin "2"
+			(uuid "de226252-6584-447a-ad04-a97b581322c2")
+		)
+		(instances
+			(project "ESE_AL8"
+				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
+					(reference "JP201")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C_Small")
 		(at 49.53 39.37 0)
 		(unit 1)
@@ -6422,7 +6805,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6ab0cbfd-8a8c-445d-a22c-be1c8bd9216e")
-		(property "Reference" "C203"
+		(property "Reference" "C204"
 			(at 52.07 38.1063 0)
 			(effects
 				(font
@@ -6476,78 +6859,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "C203")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Switch:SW_SPDT")
-		(at 118.11 110.49 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "6c22769f-3d53-4781-be07-0d366af1b9d2")
-		(property "Reference" "SW201"
-			(at 118.11 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SWITCH_CHANGEMENT"
-			(at 118.11 104.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Button_Switch_THT:SW_Slide-03_Wuerth-WS-SLTV_10x2.5x6.4_P2.54mm"
-			(at 118.11 110.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 118.11 118.11 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 118.11 110.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "06c5cc4a-4485-408e-9214-cbc578495fda")
-		)
-		(pin "3"
-			(uuid "ec59c403-8a65-4f8c-8ea1-88fff9aeec56")
-		)
-		(pin "2"
-			(uuid "4345cde5-8dc8-44ab-bbb5-8a6aac77b571")
-		)
-		(instances
-			(project "ESE_AL8"
-				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "SW201")
+					(reference "C204")
 					(unit 1)
 				)
 			)
@@ -6562,7 +6874,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6c52b7ca-41b5-4842-a4fa-29541410859c")
-		(property "Reference" "C205"
+		(property "Reference" "C206"
 			(at 60.96 88.9 0)
 			(effects
 				(font
@@ -6580,7 +6892,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 			(at 58.42 92.71 0)
 			(effects
 				(font
@@ -6616,7 +6928,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "C205")
+					(reference "C206")
 					(unit 1)
 				)
 			)
@@ -6716,7 +7028,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "1u"
 			(at 36.83 40.386 0)
 			(effects
 				(font
@@ -6725,7 +7037,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 			(at 44.45 39.37 0)
 			(effects
 				(font
@@ -7319,7 +7631,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "97840574-3283-4e07-aef4-85c15d93ff09")
-		(property "Reference" "#PWR0206"
+		(property "Reference" "#PWR0207"
 			(at 57.15 111.76 0)
 			(effects
 				(font
@@ -7369,7 +7681,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "#PWR0206")
+					(reference "#PWR0207")
 					(unit 1)
 				)
 			)
@@ -7467,73 +7779,6 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 123.19 113.03 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "9ec587cc-08e0-48a8-bae5-8a162eb16635")
-		(property "Reference" "#PWR0221"
-			(at 129.54 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 127 113.03 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 123.19 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 123.19 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 123.19 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "b679ee87-45b6-41fe-b72c-c331dac669b4")
-		)
-		(instances
-			(project "ESE_AL8"
-				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "#PWR0221")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
 		(at 114.3 43.18 270)
 		(mirror x)
 		(unit 1)
@@ -7543,7 +7788,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9f1c4044-abbf-45b9-b016-3913849306eb")
-		(property "Reference" "#PWR0214"
+		(property "Reference" "#PWR0215"
 			(at 107.95 43.18 0)
 			(effects
 				(font
@@ -7594,7 +7839,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "#PWR0214")
+					(reference "#PWR0215")
 					(unit 1)
 				)
 			)
@@ -7677,7 +7922,7 @@
 		(dnp no)
 		(uuid "a7f58321-8847-417e-9460-b4dfeaabaec5")
 		(property "Reference" "C201"
-			(at 44.45 81.2863 0)
+			(at 34.544 78.486 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7685,8 +7930,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100n"
-			(at 44.958 82.804 0)
+		(property "Value" "1u"
+			(at 34.544 79.756 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7694,7 +7939,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 			(at 41.91 82.55 0)
 			(effects
 				(font
@@ -7745,7 +7990,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a8d06ae6-21f2-419d-a989-67fbaa3f7029")
-		(property "Reference" "C207"
+		(property "Reference" "C208"
 			(at 63.754 46.482 0)
 			(effects
 				(font
@@ -7763,7 +8008,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 			(at 60.96 49.53 0)
 			(effects
 				(font
@@ -7799,7 +8044,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "C207")
+					(reference "C208")
 					(unit 1)
 				)
 			)
@@ -7814,7 +8059,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b108ef09-e73d-4179-8684-e0dc69ca00c6")
-		(property "Reference" "C204"
+		(property "Reference" "C205"
 			(at 59.69 102.87 0)
 			(effects
 				(font
@@ -7832,7 +8077,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 			(at 57.15 102.87 0)
 			(effects
 				(font
@@ -7868,7 +8113,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "C204")
+					(reference "C205")
 					(unit 1)
 				)
 			)
@@ -7883,7 +8128,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b8f7a549-3e3d-4715-bc1a-020e630902ce")
-		(property "Reference" "C206"
+		(property "Reference" "C207"
 			(at 62.23 59.69 0)
 			(effects
 				(font
@@ -7901,7 +8146,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 			(at 59.69 59.69 0)
 			(effects
 				(font
@@ -7937,7 +8182,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "C206")
+					(reference "C207")
 					(unit 1)
 				)
 			)
@@ -8021,7 +8266,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c0e41a1a-5da3-4ff8-9378-9091c42acf47")
-		(property "Reference" "#PWR0205"
+		(property "Reference" "#PWR0206"
 			(at 49.53 30.48 0)
 			(effects
 				(font
@@ -8071,7 +8316,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "#PWR0205")
+					(reference "#PWR0206")
 					(unit 1)
 				)
 			)
@@ -8153,7 +8398,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d0888a09-8929-4a64-ae25-01ac619967ae")
-		(property "Reference" "#PWR0218"
+		(property "Reference" "#PWR0219"
 			(at 125.73 67.31 0)
 			(effects
 				(font
@@ -8204,7 +8449,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "#PWR0218")
+					(reference "#PWR0219")
 					(unit 1)
 				)
 			)
@@ -8238,7 +8483,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
 			(at 186.69 62.23 0)
 			(effects
 				(font
@@ -8281,6 +8526,203 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 182.88 52.07 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d0a3eac2-2bc4-4e40-bc3c-1dbb18e4c728")
+		(property "Reference" "TP201"
+			(at 179.324 45.466 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 178.054 43.434 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+			(at 187.96 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 187.96 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 182.88 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1d788842-024d-4f17-9ccf-d2bcd506bcfc")
+		)
+		(instances
+			(project ""
+				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
+					(reference "TP201")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 46.99 80.01 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d43df037-7737-433f-8b22-9d091affa3f9")
+		(property "Reference" "#PWR0205"
+			(at 46.99 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 46.99 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 46.99 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 46.99 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 46.99 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b860f3c5-4334-48c4-aadc-d6fc850e36a2")
+		)
+		(instances
+			(project "ESE_AL8"
+				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
+					(reference "#PWR0205")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 36.83 86.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d4dd714b-357c-4a20-a342-b5307c23eb25")
+		(property "Reference" "#FLG0201"
+			(at 36.83 84.455 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 33.782 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 36.83 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 36.83 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 36.83 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "dd73ac95-bf29-4324-ab3d-28ff6e03e435")
+		)
+		(instances
+			(project "ESE_AL8"
+				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
+					(reference "#FLG0201")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+3.3V")
 		(at 114.3 38.1 90)
 		(mirror x)
@@ -8291,7 +8733,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d7280e10-9aae-4a81-ba61-bad86b9c5285")
-		(property "Reference" "#PWR0212"
+		(property "Reference" "#PWR0213"
 			(at 118.11 38.1 0)
 			(effects
 				(font
@@ -8342,7 +8784,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "#PWR0212")
+					(reference "#PWR0213")
 					(unit 1)
 				)
 			)
@@ -8359,7 +8801,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "df7c356f-de60-4a24-b1b1-356e8a028033")
-		(property "Reference" "#PWR0216"
+		(property "Reference" "#PWR0217"
 			(at 119.38 147.32 0)
 			(effects
 				(font
@@ -8410,7 +8852,7 @@
 		(instances
 			(project ""
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "#PWR0216")
+					(reference "#PWR0217")
 					(unit 1)
 				)
 			)
@@ -8569,7 +9011,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ea60f56f-c15b-493f-ba07-e337f8805472")
-		(property "Reference" "#PWR0219"
+		(property "Reference" "#PWR0220"
 			(at 115.57 74.93 0)
 			(effects
 				(font
@@ -8620,7 +9062,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "#PWR0219")
+					(reference "#PWR0220")
 					(unit 1)
 				)
 			)
@@ -8637,7 +9079,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ed7d6d06-39ef-43ae-b41d-2016cd445c14")
-		(property "Reference" "C209"
+		(property "Reference" "C210"
 			(at 222.25 35.5663 0)
 			(effects
 				(font
@@ -8655,7 +9097,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 			(at 219.71 36.83 0)
 			(effects
 				(font
@@ -8691,7 +9133,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "C209")
+					(reference "C210")
 					(unit 1)
 				)
 			)
@@ -8776,74 +9218,6 @@
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
 					(reference "J204")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3.3V")
-		(at 123.19 107.95 270)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "f9a35266-7c44-4b09-887b-fd6423734517")
-		(property "Reference" "#PWR0220"
-			(at 119.38 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 127 107.95 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 123.19 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 123.19 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 123.19 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ee523ffa-ed58-4f3d-b588-0659dcae00f9")
-		)
-		(instances
-			(project "ESE_AL8"
-				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
-					(reference "#PWR0220")
 					(unit 1)
 				)
 			)
