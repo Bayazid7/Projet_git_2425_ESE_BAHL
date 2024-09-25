@@ -23,12 +23,8 @@ https://www.canva.com/design/DAGQbxRenXI/GUDe0BMdF_tvJ-OYr82Fnw/edit?utm_content
 trame du YDLIDAR X4 se compose des éléments suivants :
 <br>
 - En-tête (2 octets) : Indique le début d'une nouvelle trame
-<br>
 - Longueur des données (1 octet) : Taille des données qui suivent
-<br>
 - Données de points (variable) : Informations sur chaque point mesuré
-<br>
 - Checksum (2 octets) : Pour vérifier l'intégrité des données
-
 <br>
 (Pour chaque point)
