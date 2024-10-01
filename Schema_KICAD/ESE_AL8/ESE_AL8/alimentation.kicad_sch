@@ -2461,7 +2461,7 @@
 	)
 	(wire
 		(pts
-			(xy 216.535 54.61) (xy 219.075 54.61)
+			(xy 216.535 54.61) (xy 223.52 54.61)
 		)
 		(stroke
 			(width 0)
@@ -2753,6 +2753,30 @@
 				(hide yes)
 			)
 		)
+	)
+	(hierarchical_label "5v"
+		(shape input)
+		(at 219.71 54.61 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c34740a3-2322-4044-8856-1f576e356acc")
+	)
+	(hierarchical_label "BATT"
+		(shape input)
+		(at 115.57 46.99 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c43cd954-2543-48c3-8964-8fa0aedae91a")
 	)
 	(hierarchical_label "3.3V"
 		(shape input)
@@ -5206,7 +5230,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 219.075 54.61 0)
+		(at 223.52 54.61 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5215,7 +5239,7 @@
 		(fields_autoplaced yes)
 		(uuid "daa6885d-6128-43f4-926e-feb9187812ee")
 		(property "Reference" "#PWR0308"
-			(at 219.075 58.42 0)
+			(at 223.52 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5224,7 +5248,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 219.075 49.53 0)
+			(at 223.52 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5232,7 +5256,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 219.075 54.61 0)
+			(at 223.52 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5241,7 +5265,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 219.075 54.61 0)
+			(at 223.52 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5250,7 +5274,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 219.075 54.61 0)
+			(at 223.52 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)

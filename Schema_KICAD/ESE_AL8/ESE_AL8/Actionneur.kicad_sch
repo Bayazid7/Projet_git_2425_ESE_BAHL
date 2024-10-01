@@ -1980,6 +1980,18 @@
 		)
 		(uuid "83e58fc5-6303-481b-b967-8f2223db8258")
 	)
+	(hierarchical_label "BATT"
+		(shape input)
+		(at 64.77 55.88 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a7ccc1a7-5291-406a-9200-b81248a52811")
+	)
 	(symbol
 		(lib_id "power:GND")
 		(at 87.63 142.24 180)

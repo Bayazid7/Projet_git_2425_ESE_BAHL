@@ -2622,6 +2622,16 @@
 		)
 		(uuid "f1f464b2-73a8-4ac7-aa8b-4e41bfac3dc2")
 	)
+	(wire
+		(pts
+			(xy 162.56 132.08) (xy 168.91 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fc17d236-e306-4d12-8e0c-4b0f1b809150")
+	)
 	(rectangle
 		(start 234.95 45.72)
 		(end 276.86 96.012)
@@ -2948,6 +2958,18 @@
 			(justify right)
 		)
 		(uuid "a33c9144-004a-4089-9e8c-88bd23e7fc0f")
+	)
+	(hierarchical_label "5v"
+		(shape input)
+		(at 165.1 132.08 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a3eaabd2-6d21-4564-bc0e-4501a464e09a")
 	)
 	(hierarchical_label "M_EN_LIDAR"
 		(shape input)
@@ -5147,7 +5169,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 168.91 132.08 90)
+		(at 162.56 132.08 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5156,7 +5178,7 @@
 		(fields_autoplaced yes)
 		(uuid "d0888a09-8929-4a64-ae25-01ac619967ae")
 		(property "Reference" "#PWR0219"
-			(at 172.72 132.08 0)
+			(at 166.37 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5165,7 +5187,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 165.1 132.08 90)
+			(at 158.75 132.08 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5174,7 +5196,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 168.91 132.08 0)
+			(at 162.56 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5183,7 +5205,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 168.91 132.08 0)
+			(at 162.56 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5192,7 +5214,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 168.91 132.08 0)
+			(at 162.56 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
