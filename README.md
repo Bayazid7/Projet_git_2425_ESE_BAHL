@@ -32,4 +32,26 @@ trame du YDLIDAR X4 se compose des éléments suivants :
 RQ: Utiliser un struct pour les données reçues
 
 
-#TEST
+# Rappels git
+
+## Les branches
+
+### Creér une branche
+``
+git checkout -b <nom de la branche>
+``
+
+### Changer de branche
+``
+git checkout <nom de la branche>
+``
+ ## Commits et push
+!!! ATTENTION À LA BRANCHE OÙ L'ON SE TROVUE !!!
+```
+git add . 
+git commit -m "message de commit"
+git push
+```
+
+## Merge dans le main
+On utilise des PR (pull requests), on ne push jamais rien dans le `main`!
