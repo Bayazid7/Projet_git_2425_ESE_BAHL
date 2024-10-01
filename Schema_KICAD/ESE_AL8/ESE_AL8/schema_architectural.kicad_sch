@@ -126,8 +126,8 @@
 		(uuid 2cff1a00-ba8b-48bc-8b9c-f64eefe8c5a8)
 	)
 	(rectangle
-		(start 66.04 102.87)
-		(end 82.296 113.03)
+		(start 60.706 105.156)
+		(end 85.852 113.03)
 		(stroke
 			(width 0)
 			(type default)
@@ -808,9 +808,9 @@
 		)
 		(uuid "3751c97a-b61f-4ba7-bc6a-6457747740f7")
 	)
-	(text "GPIOs\n"
+	(text "GPIOs(si possible)\n\n"
 		(exclude_from_sim no)
-		(at 73.406 108.204 0)
+		(at 73.152 111.252 0)
 		(effects
 			(font
 				(size 1.778 1.778)

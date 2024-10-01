@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.0,
-          "height": 1.13,
-          "width": 1.13
+          "drill": 0.5,
+          "height": 0.8,
+          "width": 0.8
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -214,6 +214,10 @@
         {
           "diameter": 0.0,
           "drill": 0.0
+        },
+        {
+          "diameter": 0.5,
+          "drill": 0.3
         },
         {
           "diameter": 0.7,
@@ -488,7 +492,24 @@
         "name": "Alim",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 1.0,
+        "track_width": 0.75,
+        "via_diameter": 0.7,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "vol",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.5,
         "via_diameter": 0.7,
         "via_drill": 0.3,
         "wire_width": 6
@@ -503,6 +524,26 @@
       {
         "netclass": "Alim",
         "pattern": "VIN"
+      },
+      {
+        "netclass": "vol",
+        "pattern": "+5V"
+      },
+      {
+        "netclass": "Alim",
+        "pattern": "MOTEUR1+"
+      },
+      {
+        "netclass": "Alim",
+        "pattern": "MOTEUR1-"
+      },
+      {
+        "netclass": "Alim",
+        "pattern": "MOTEUR2+"
+      },
+      {
+        "netclass": "Alim",
+        "pattern": "MOTEUR2-"
       }
     ]
   },
@@ -635,6 +676,14 @@
     [
       "e231d587-6aa9-4f63-9a73-c878b68e277e",
       "Schema architectural"
+    ],
+    [
+      "8843c890-3b72-4148-ae11-d4327f6e9857",
+      "STM32"
+    ],
+    [
+      "f94fd181-fddb-4c12-b204-c995a93072c8",
+      "Actionneur"
     ]
   ],
   "text_variables": {}
