@@ -1,0 +1,5 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "ESE_2425kicad_sym")(type "KiCad")(uri "/media/aliou/0C73-82A3/Projet_3A/Projet_git_2425_ESE_BAHL/Schema_KICAD/Librairie/ESE_2425kicad_sym.kicad_sym")(options "")(descr ""))
+  (lib (name "ESE_2425")(type "KiCad")(uri "/media/aliou/0C73-82A3/Projet_3A/Projet_git_2425_ESE_BAHL/Schema_KICAD/Librairie/ESE_2425.kicad_sym")(options "")(descr ""))
+)
