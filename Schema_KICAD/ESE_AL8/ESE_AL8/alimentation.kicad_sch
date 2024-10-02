@@ -2025,9 +2025,13 @@
 		(at 241.3 132.08)
 		(uuid "b0807919-8147-4725-bb27-3689adb73965")
 	)
+	(no_connect
+		(at 58.42 43.18)
+		(uuid "e89cc8a5-cad4-4142-b257-8f21ac5762e9")
+	)
 	(wire
 		(pts
-			(xy 120.65 66.04) (xy 120.65 68.58)
+			(xy 124.46 66.04) (xy 124.46 68.58)
 		)
 		(stroke
 			(width 0)
@@ -2267,7 +2271,7 @@
 	)
 	(wire
 		(pts
-			(xy 120.65 59.69) (xy 133.35 59.69)
+			(xy 124.46 59.69) (xy 133.35 59.69)
 		)
 		(stroke
 			(width 0)
@@ -2347,7 +2351,7 @@
 	)
 	(wire
 		(pts
-			(xy 120.65 68.58) (xy 143.51 68.58)
+			(xy 124.46 68.58) (xy 143.51 68.58)
 		)
 		(stroke
 			(width 0)
@@ -2407,7 +2411,7 @@
 	)
 	(wire
 		(pts
-			(xy 120.65 60.96) (xy 120.65 59.69)
+			(xy 124.46 60.96) (xy 124.46 59.69)
 		)
 		(stroke
 			(width 0)
@@ -3196,7 +3200,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small")
-		(at 120.65 63.5 0)
+		(at 124.46 63.5 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3204,7 +3208,7 @@
 		(dnp no)
 		(uuid "10daebfb-71ea-4cd2-a528-ea08ebd30085")
 		(property "Reference" "R5"
-			(at 121.92 62.992 0)
+			(at 125.73 62.992 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3213,7 +3217,7 @@
 			)
 		)
 		(property "Value" "100K"
-			(at 122.428 64.77 0)
+			(at 126.238 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3222,7 +3226,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
-			(at 120.65 63.5 0)
+			(at 124.46 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3231,7 +3235,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 120.65 63.5 0)
+			(at 124.46 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3240,7 +3244,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 120.65 63.5 0)
+			(at 124.46 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3356,7 +3360,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 			(at 216.535 59.055 0)
 			(effects
 				(font
@@ -3561,7 +3565,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 			(at 107.95 54.61 0)
 			(effects
 				(font
@@ -4682,71 +4686,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 58.42 43.18 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "819cf375-a2c7-4230-bfbf-039117d6a34f")
-		(property "Reference" "#PWR020"
-			(at 58.42 49.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 55.118 44.704 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 58.42 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 58.42 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 58.42 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "9418af55-ad1d-4d75-9f51-6fd3f7dbb93f")
-		)
-		(instances
-			(project "ESE_AL8"
-				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/f403419b-15e7-44f7-a652-fb424ff9de0d"
-					(reference "#PWR020")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C_Small")
 		(at 205.74 58.42 0)
 		(unit 1)
@@ -4773,7 +4712,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 			(at 205.74 58.42 0)
 			(effects
 				(font

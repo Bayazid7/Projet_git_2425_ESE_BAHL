@@ -727,4 +727,15 @@
 			(xyz -90 0 0)
 		)
 	)
+	(model "D:/Projet3A/Projet_git_2425_ESE_BAHL/Schema_KICAD/FootPrint/STM32/STM32G431CBU6.STEP"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 0)
+		)
+	)
 )

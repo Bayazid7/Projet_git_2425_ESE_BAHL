@@ -1,4 +1,4 @@
 (fp_lib_table
   (version 7)
-  (lib (name "STM32")(type "KiCad")(uri "F:/Projet_3A/Projet_git_2425_ESE_BAHL/Schema_KICAD/Librairie/STM32.pretty")(options "")(descr ""))
+  (lib (name "STM32")(type "KiCad")(uri "D:/Projet3A/Projet_git_2425_ESE_BAHL/Schema_KICAD/Librairie/STM32.pretty")(options "")(descr ""))
 )
