@@ -51,30 +51,42 @@ void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, LED1_Pin|GPIO_PIN_14|GPIO_PIN_15, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, LED1_Pin|GPIO_PIN_14|LED3_Pin|M_EN_LIDAR_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, DEV_EN_Pin|M_EN_Pin|CB_IN_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(CB_IN_GPIO_Port, CB_IN_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : PCPin PC14 PC15 */
-  GPIO_InitStruct.Pin = LED1_Pin|GPIO_PIN_14|GPIO_PIN_15;
+  /*Configure GPIO pins : PCPin PC14 PCPin PCPin */
+  GPIO_InitStruct.Pin = LED1_Pin|GPIO_PIN_14|LED3_Pin|M_EN_LIDAR_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PAPin PAPin PAPin */
-  GPIO_InitStruct.Pin = DEV_EN_Pin|M_EN_Pin|CB_IN_Pin;
+  /*Configure GPIO pin : PtPin */
+  GPIO_InitStruct.Pin = CHAT_SOURIS_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(CHAT_SOURIS_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PtPin */
+  GPIO_InitStruct.Pin = DEV_EN_LIDAR_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(DEV_EN_LIDAR_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PtPin */
+  GPIO_InitStruct.Pin = CB_IN_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  HAL_GPIO_Init(CB_IN_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PBPin PBPin */
-  GPIO_InitStruct.Pin = CHAT_SOURIS_Pin|INT_ACCELERO_Pin;
+  /*Configure GPIO pin : PtPin */
+  GPIO_InitStruct.Pin = INT1_ACCELERO_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  HAL_GPIO_Init(INT1_ACCELERO_GPIO_Port, &GPIO_InitStruct);
 
 }
 
