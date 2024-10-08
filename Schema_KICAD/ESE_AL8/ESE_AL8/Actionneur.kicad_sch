@@ -2161,7 +2161,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 120.65 142.24 0)
 			(effects
 				(font
@@ -2230,7 +2230,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 125.73 64.77 0)
 			(effects
 				(font
@@ -2299,7 +2299,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 97.79 67.31 0)
 			(effects
 				(font
@@ -2436,7 +2436,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 130.81 64.77 0)
 			(effects
 				(font
@@ -2505,7 +2505,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 87.63 144.78 0)
 			(effects
 				(font
@@ -2574,7 +2574,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 113.03 142.24 0)
 			(effects
 				(font
@@ -2907,7 +2907,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_SO:Diodes_SO-8EP"
+		(property "Footprint" "STM32:Diodes_SO-8EP"
 			(at 74.93 156.21 0)
 			(effects
 				(font
@@ -3194,7 +3194,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 96.52 82.55 0)
 			(effects
 				(font
@@ -3263,7 +3263,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 86.36 154.94 0)
 			(effects
 				(font
@@ -3731,7 +3731,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_SO:Diodes_SO-8EP"
+		(property "Footprint" "STM32:Diodes_SO-8EP"
 			(at 83.82 73.66 0)
 			(effects
 				(font

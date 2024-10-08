@@ -2263,6 +2263,12 @@
 		)
 	)
 	(junction
+		(at 215.9 147.32)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "29cbf218-ca05-4f00-9be2-8d0de6654d46")
+	)
+	(junction
 		(at 204.47 50.8)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2484,6 +2490,16 @@
 	)
 	(wire
 		(pts
+			(xy 215.9 152.4) (xy 217.17 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7aeee641-a221-4015-a53b-2050aab2065c")
+	)
+	(wire
+		(pts
 			(xy 172.72 83.82) (xy 180.34 83.82)
 		)
 		(stroke
@@ -2647,8 +2663,8 @@
 		(uuid 704549bb-1fd5-45fb-bb5e-175766c60783)
 	)
 	(rectangle
-		(start 198.12 127)
-		(end 241.3 152.4)
+		(start 199.39 134.62)
+		(end 242.57 160.02)
 		(stroke
 			(width 0)
 			(type default)
@@ -3355,7 +3371,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 184.15 53.34 0)
 			(effects
 				(font
@@ -3557,7 +3573,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H9.5mm"
+		(property "Footprint" "STM32:SW_Push_1P1T_NO_6x6mm_H9.5mm"
 			(at 220.98 142.24 0)
 			(effects
 				(font
@@ -3626,7 +3642,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 172.72 78.74 0)
 			(effects
 				(font
@@ -4627,6 +4643,71 @@
 	)
 	(symbol
 		(lib_id "power:GND")
+		(at 217.17 152.4 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9cec0222-c12b-4d00-9920-1f73683d92b6")
+		(property "Reference" "#PWR0201"
+			(at 217.17 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 217.424 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 217.17 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 217.17 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 217.17 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "974aeabf-0b0d-40ea-ba5c-16929f5d2c64")
+		)
+		(instances
+			(project "ESE_AL8"
+				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
+					(reference "#PWR0201")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
 		(at 184.15 55.88 0)
 		(mirror y)
 		(unit 1)
@@ -4854,7 +4935,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 180.34 78.74 0)
 			(effects
 				(font
@@ -5193,7 +5274,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 213.36 53.34 0)
 			(effects
 				(font
@@ -5230,6 +5311,76 @@
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
 					(reference "C2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 215.9 149.86 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "eefd01ae-b2cb-4c57-9aeb-26c799d95d22")
+		(property "Reference" "C201"
+			(at 218.44 148.5962 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100n"
+			(at 218.44 151.1362 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 215.9 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 215.9 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 215.9 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c2380654-b810-49cd-ba18-48ac2955f940")
+		)
+		(pin "2"
+			(uuid "3e3c1e3a-c1b0-437b-b853-5b868752a4f2")
+		)
+		(instances
+			(project ""
+				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
+					(reference "C201")
 					(unit 1)
 				)
 			)

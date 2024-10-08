@@ -105,7 +105,7 @@ void Error_Handler(void);
 #define SW_RX_GPIO_Port GPIOC
 #define SWO_Pin GPIO_PIN_3
 #define SWO_GPIO_Port GPIOB
-#define INT1_ACCELERO_Pin GPIO_PIN_7
+#define INT1_ACCELERO_Pin GPIO_PIN_6
 #define INT1_ACCELERO_GPIO_Port GPIOB
 #define SCL_Pin GPIO_PIN_8
 #define SCL_GPIO_Port GPIOB

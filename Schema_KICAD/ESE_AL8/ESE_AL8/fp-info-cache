@@ -1,4 +1,4 @@
-23844814208797422
+23851727022091019
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -88984,6 +88984,20 @@ rotary encoder illuminated switch vertical
 9
 8
 STM32
+Diodes_SO-8EP
+8-Lead Plastic SO, Exposed Die Pad (see https://www.diodes.com/assets/Package-Files/SO-8EP.pdf)
+SO exposed pad
+0
+9
+9
+STM32
+IND_052047_WRE
+
+74404052047 
+0
+2
+2
+STM32
 Inductor_Buck
 
 
@@ -89004,6 +89018,20 @@ SWITCH TOGGLE SPDT 1A 30V
 0
 3
 3
+STM32
+SW_Push_1P1T_NO_6x6mm_H9.5mm
+tactile push button, 6x6mm e.g. PTS645xx series, height=9.5mm
+tact sw push 6mm smd
+0
+4
+2
+STM32
+logo
+
+
+0
+0
+0
 Sensor
 ASAIR_AM2302_P2.54mm_Lead2.75mm_TabDown
 Temperature and humidity module, http://akizukidenshi.com/download/ds/aosong/AM2302.pdf
