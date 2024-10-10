@@ -241,12 +241,6 @@
 		(uuid "8a1104c2-8c53-4457-a9c8-9f0ea29c649e")
 	)
 	(junction
-		(at 120.65 64.77)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "91e52546-39fe-4697-8edd-704686027c8f")
-	)
-	(junction
 		(at 92.71 99.06)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -321,16 +315,6 @@
 			(type default)
 		)
 		(uuid "1f035ea7-a396-46c1-b6a0-6bba492f621d")
-	)
-	(wire
-		(pts
-			(xy 83.82 64.77) (xy 120.65 64.77)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "21152749-9da3-4866-8b4b-2193364a7c50")
 	)
 	(wire
 		(pts
@@ -734,16 +718,6 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 68.58) (xy 120.65 68.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b5102fb8-bef3-4533-b941-1c659ec31955")
-	)
-	(wire
-		(pts
 			(xy 251.46 95.25) (xy 251.46 96.52)
 		)
 		(stroke
@@ -891,7 +865,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "089d1480-6017-43f1-acdc-797a65cd2f4f")
-		(property "Reference" "H104"
+		(property "Reference" "H4"
 			(at 264.414 88.138 0)
 			(effects
 				(font
@@ -943,7 +917,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6"
-					(reference "H104")
+					(reference "H4")
 					(unit 1)
 				)
 			)
@@ -958,7 +932,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0faabebc-f2b4-45d3-a523-33749479b46c")
-		(property "Reference" "H103"
+		(property "Reference" "H3"
 			(at 259.334 88.138 0)
 			(effects
 				(font
@@ -1010,7 +984,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6"
-					(reference "H103")
+					(reference "H3")
 					(unit 1)
 				)
 			)
@@ -1025,7 +999,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3517036f-6e9b-41a1-bb76-0d8533139920")
-		(property "Reference" "H101"
+		(property "Reference" "H1"
 			(at 249.174 88.138 0)
 			(effects
 				(font
@@ -1077,7 +1051,7 @@
 		(instances
 			(project ""
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6"
-					(reference "H101")
+					(reference "H1")
 					(unit 1)
 				)
 			)
@@ -1094,7 +1068,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c0dfbfa7-ad03-4e58-bef7-5123b10a327a")
-		(property "Reference" "#PWR0114"
+		(property "Reference" "#PWR01"
 			(at 259.08 104.14 0)
 			(effects
 				(font
@@ -1145,7 +1119,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6"
-					(reference "#PWR0114")
+					(reference "#PWR01")
 					(unit 1)
 				)
 			)
@@ -1160,7 +1134,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "d05c4303-e17b-4884-a0b0-033a28a9022b")
-		(property "Reference" "H102"
+		(property "Reference" "H2"
 			(at 254.254 88.138 0)
 			(effects
 				(font
@@ -1212,7 +1186,7 @@
 		(instances
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6"
-					(reference "H102")
+					(reference "H2")
 					(unit 1)
 				)
 			)
@@ -1220,7 +1194,7 @@
 	)
 	(sheet
 		(at 120.65 49.53)
-		(size 46.99 91.44)
+		(size 46.99 87.376)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -1240,7 +1214,7 @@
 			)
 		)
 		(property "Sheetfile" "STM32.kicad_sch"
-			(at 120.65 141.5546 0)
+			(at 120.65 137.4906 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1297,26 +1271,6 @@
 				(justify left)
 			)
 			(uuid "3c60b806-c05e-4c62-8a57-fcf4e52d0c41")
-		)
-		(pin "CB_OUT4" input
-			(at 120.65 68.58 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "1e7f3dc4-8dfb-4499-9188-994d5d62bbca")
-		)
-		(pin "CB_OUT3" input
-			(at 120.65 64.77 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "ab9a4ddd-f4f4-4ed2-95d5-926098047803")
 		)
 		(pin "SCL" input
 			(at 120.65 99.06 180)
@@ -1487,7 +1441,7 @@
 		)
 	)
 	(sheet
-		(at 215.9 21.59)
+		(at 233.934 48.768)
 		(size 48.26 30.48)
 		(fields_autoplaced yes)
 		(stroke
@@ -1499,7 +1453,7 @@
 		)
 		(uuid "e231d587-6aa9-4f63-9a73-c878b68e277e")
 		(property "Sheetname" "Schema architectural"
-			(at 215.9 20.8784 0)
+			(at 233.934 48.0564 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1508,7 +1462,7 @@
 			)
 		)
 		(property "Sheetfile" "schema_architectural.kicad_sch"
-			(at 215.9 52.6546 0)
+			(at 233.934 79.8326 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1752,26 +1706,6 @@
 				(justify right)
 			)
 			(uuid "74fd6459-4b8d-4c84-92fa-451fdee87c30")
-		)
-		(pin "CB_OUT4" input
-			(at 83.82 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "2ccd5fdf-dc34-4743-ab1f-a4105f38b919")
-		)
-		(pin "CB_OUT3" input
-			(at 83.82 64.77 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "8f62c7c4-0801-4808-bd64-89af1433ad81")
 		)
 		(pin "5v" input
 			(at 57.15 49.53 90)

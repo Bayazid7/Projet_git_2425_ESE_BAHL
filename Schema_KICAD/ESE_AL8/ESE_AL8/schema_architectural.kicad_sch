@@ -908,7 +908,7 @@
 		)
 		(uuid "dadbb64c-4efb-49e8-b4cf-61d010c5e903")
 	)
-	(text "4*Capteur Bordeur"
+	(text "2*Capteur bordure"
 		(exclude_from_sim no)
 		(at 199.39 118.11 0)
 		(effects
