@@ -27,7 +27,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -60,7 +60,12 @@ void MX_FREERTOS_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+int __io_putchar(int ch)
+{
+	HAL_UART_Transmit(&huart2, (uint8_t*)&ch, 1, HAL_MAX_DELAY);
 
+	return ch;
+}
 /* USER CODE END 0 */
 
 /**
@@ -101,7 +106,14 @@ int main(void)
   MX_TIM3_Init();
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
-
+  StartMoteursens1();
+  HAL_Delay(100);
+  //printf("l'activation PWM\n\r");
+  StartMoteursens2();
+  HAL_Delay(100);
+  //printf("l'activation PWM\n\r");
+  StopMoteur();
+  HAL_Delay(100);
   /* USER CODE END 2 */
 
   /* Init scheduler */

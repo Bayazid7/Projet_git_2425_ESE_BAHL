@@ -1,0 +1,3 @@
+../Core/Src/Driver.c:3:6:StartMoteursens1	8	static
+../Core/Src/Driver.c:12:6:StartMoteursens2	8	static
+../Core/Src/Driver.c:21:6:StopMoteur	8	static
