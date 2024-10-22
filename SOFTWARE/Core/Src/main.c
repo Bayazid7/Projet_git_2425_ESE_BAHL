@@ -131,6 +131,12 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  printf("l'activation de l'encodeur");
+	  EncoderStart();
+	  uint16_t valueEnc = GetEncodeur();
+	  printf("Encoder Value: %ld\r\n", valueEnc);//affichage des valeurs
+      float vitesse = GetMotorSpeed();
+      printf("Encoder Value: %ld\r\n", vitesse);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
