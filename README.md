@@ -59,4 +59,7 @@ On utilise des PR (pull requests), on ne push jamais rien dans le `main`!
 ## Informations sur le drive moteur
 ![image](https://github.com/user-attachments/assets/96307006-d3b4-4429-a48b-d9f559a6e461)
 
+# Informations sur le timer 3 de l'encodeur.
+
+![image](https://github.com/user-attachments/assets/532c225f-c9cc-4b92-bc5e-aecaed79f07d)
 
