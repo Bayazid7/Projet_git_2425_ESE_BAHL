@@ -273,7 +273,7 @@
 		(layers "F.Cu" "F.Paste" "F.Mask")
 		(uuid "9b1d7e77-d06e-47b3-9f83-98d745df92c0")
 	)
-	(model "C:/Users/aliou/Downloads/430182070816_Download_STP_430182070816_rev1.stp"
+	(model "D:/Projet3A/Projet_git_2425_ESE_BAHL/Schema_KICAD/Librairie/430182070816_Download_STP_430182070816_rev1.stp"
 		(offset
 			(xyz 0 0 0)
 		)

@@ -4031,28 +4031,6 @@
 			)
 		)
 	)
-	(global_label "TX_SWD"
-		(shape input)
-		(at 97.79 80.01 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "1ff5691a-6252-40a5-805e-aed4e6a38f5a")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 87.7292 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "LD1"
 		(shape input)
 		(at 49.53 128.27 180)
@@ -4119,6 +4097,28 @@
 			)
 		)
 	)
+	(global_label "RX_SWD"
+		(shape input)
+		(at 97.79 82.55 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "5dd90686-f3c7-4521-8692-3aa842313f9b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 87.4268 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "SWO"
 		(shape input)
 		(at 97.79 102.87 180)
@@ -4160,28 +4160,6 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "RX_SWD"
-		(shape input)
-		(at 97.79 82.55 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "83c18f85-436b-4ef7-b467-4feebda32b01")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 87.4268 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
 				(hide yes)
 			)
 		)
@@ -4386,6 +4364,28 @@
 			)
 		)
 	)
+	(global_label "TX_SWD"
+		(shape input)
+		(at 97.79 80.01 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "f52cd8ab-f563-40de-bf9e-cb30301c97b1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 87.7292 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(hierarchical_label "CB_OUT2"
 		(shape input)
 		(at 130.81 64.77 0)
@@ -4398,18 +4398,6 @@
 		)
 		(uuid "017b2c92-6e74-4349-8c40-ff6770f3cd63")
 	)
-	(hierarchical_label "TX_LIDAR"
-		(shape input)
-		(at 97.79 120.65 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "01a78df9-2aba-4a15-8aa4-ebf202c1b082")
-	)
 	(hierarchical_label "PHASE_B1"
 		(shape input)
 		(at 130.81 85.09 0)
@@ -4421,6 +4409,18 @@
 			(justify left)
 		)
 		(uuid "36be87d3-31d2-4119-83a9-e8641fd36fc3")
+	)
+	(hierarchical_label "TX_LIDAR"
+		(shape input)
+		(at 97.79 123.19 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "3965fa81-c97a-4700-b88c-7a3b277d0b29")
 	)
 	(hierarchical_label "M_SCTR_LIDAR"
 		(shape input)
@@ -4445,6 +4445,18 @@
 			(justify right)
 		)
 		(uuid "50120240-4164-426b-8c94-df0cd1f14266")
+	)
+	(hierarchical_label "RX_LIDAR"
+		(shape input)
+		(at 97.79 120.65 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "51bb05d9-4240-4696-a99d-afb9fc69e0dc")
 	)
 	(hierarchical_label "PHASE_A2"
 		(shape input)
@@ -4481,18 +4493,6 @@
 			(justify left)
 		)
 		(uuid "7948a8b5-e272-466e-89ab-67cf1804d2a2")
-	)
-	(hierarchical_label "RX_LIDAR"
-		(shape input)
-		(at 97.79 123.19 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "83530645-e91a-45ca-a33f-c8e554d207e8")
 	)
 	(hierarchical_label "FWD1"
 		(shape input)
