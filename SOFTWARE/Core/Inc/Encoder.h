@@ -4,4 +4,4 @@
 void EncoderStart(void);
 uint16_t GetEncodeur(void);
 float GetMotorSpeed(void);
-
+void DirMoteur(void);

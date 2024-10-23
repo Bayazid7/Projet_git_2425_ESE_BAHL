@@ -27,25 +27,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  0000c06c  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00028730  00000000  00000000  0000c09c  2**0
+ 12 .debug_info   00028745  00000000  00000000  0000c09c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00005422  00000000  00000000  000347cc  2**0
+ 13 .debug_abbrev 00005424  00000000  00000000  000347e1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 00002100  00000000  00000000  00039bf0  2**3
+ 14 .debug_aranges 00002108  00000000  00000000  00039c08  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_rnglists 0000198c  00000000  00000000  0003bcf0  2**0
+ 15 .debug_rnglists 00001992  00000000  00000000  0003bd10  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  0002546b  00000000  00000000  0003d67c  2**0
+ 16 .debug_macro  0002556f  00000000  00000000  0003d6a2  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00028653  00000000  00000000  00062ae7  2**0
+ 17 .debug_line   000287c9  00000000  00000000  00062c11  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000eae19  00000000  00000000  0008b13a  2**0
+ 18 .debug_str    000eae23  00000000  00000000  0008b3da  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  00175f53  2**0
+ 19 .comment      00000043  00000000  00000000  001761fd  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00009454  00000000  00000000  00175f98  2**2
+ 20 .debug_frame  00009470  00000000  00000000  00176240  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000066  00000000  00000000  0017f3ec  2**0
+ 21 .debug_line_str 00000066  00000000  00000000  0017f6b0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -796,7 +796,7 @@ void StopMoteur(void)
 
 080009b0 <EncoderStart>:
 #include "Encoder.h"
-
+#include <stdio.h>
 
 void EncoderStart(void)
 {

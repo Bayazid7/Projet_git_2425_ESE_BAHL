@@ -49,6 +49,17 @@
 
 /* USER CODE BEGIN PV */
 
+float Kp = 1.0;
+float Ki = 0.1;
+float Kd = 0.01;
+float error, previousError = 0;
+float integral = 0;
+float derivative;
+float pidOutput;
+int32_t setpoint = 1000;  // Cible de position
+int32_t currentPosition;
+float dt = 0.01;  // 10 ms entre chaque calcul PID
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -137,6 +148,8 @@ int main(void)
 	  printf("Encoder Value: %ld\r\n", valueEnc);//affichage des valeurs
       float vitesse = GetMotorSpeed();
       printf("Encoder Value: %ld\r\n", vitesse);
+
+      printf("");
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
