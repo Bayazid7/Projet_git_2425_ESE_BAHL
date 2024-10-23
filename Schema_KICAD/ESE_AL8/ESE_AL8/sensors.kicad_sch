@@ -2299,6 +2299,12 @@
 		(uuid "ab4fbef3-8201-4b10-9542-074eee9a3482")
 	)
 	(junction
+		(at 214.63 71.12)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b2382fbc-af0e-48da-a910-1f16153fedd6")
+	)
+	(junction
 		(at 172.72 83.82)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2331,10 +2337,6 @@
 	(no_connect
 		(at 168.91 149.86)
 		(uuid "17cbccb8-5042-4b8c-95ed-16ef71efa69b")
-	)
-	(no_connect
-		(at 212.09 71.12)
-		(uuid "8343464c-bc29-4782-846f-01738ffc0274")
 	)
 	(no_connect
 		(at 204.47 81.28)
@@ -2483,6 +2485,26 @@
 			(type default)
 		)
 		(uuid "6a0a0841-ec64-4b7c-b0d8-64df605acada")
+	)
+	(wire
+		(pts
+			(xy 217.17 71.12) (xy 214.63 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "717fbb2f-2476-4258-8e48-5eeced5ad937")
+	)
+	(wire
+		(pts
+			(xy 214.63 71.12) (xy 212.09 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7261f018-0f45-440b-8b15-a0be54d6d24b")
 	)
 	(wire
 		(pts
@@ -3059,6 +3081,19 @@
 			(justify right)
 		)
 		(uuid "c879287b-af87-4bab-ad7d-66bc7ea7f444")
+	)
+	(hierarchical_label "INT2_ACCELERO"
+		(shape input)
+		(at 217.17 71.12 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(bold yes)
+			)
+			(justify left)
+		)
+		(uuid "d3228c77-d9b1-479e-ac87-6302df20fbf7")
 	)
 	(hierarchical_label "PHASE_A2"
 		(shape input)
@@ -4430,7 +4465,7 @@
 			)
 		)
 		(property "Value" "TestPoint"
-			(at 214.884 71.374 0)
+			(at 217.932 72.898 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5028,6 +5063,72 @@
 			(project "ESE_AL8"
 				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
 					(reference "#PWR010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 214.63 71.12 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ca69e13c-9353-4731-9c87-0b451f7ec666")
+		(property "Reference" "TP8"
+			(at 213.36 76.454 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 223.266 76.708 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+			(at 209.55 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 209.55 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 214.63 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "56942434-b89a-407f-8f55-bcd31b17e6bc")
+		)
+		(instances
+			(project "ESE_AL8"
+				(path "/c3d0eb52-cd9d-4e69-bcf7-3f0716f715c6/ec07ab64-4612-44cf-8e70-ea693fb6c5ed"
+					(reference "TP8")
 					(unit 1)
 				)
 			)
