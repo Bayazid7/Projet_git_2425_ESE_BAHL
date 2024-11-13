@@ -3,13 +3,14 @@
 
 //calcul PID
 
-float calculPID()
+float calculPID(float error, float previousError, float dt, float Kp, float Ki, float Kd)
 {
-	integral += error * dt;
-	derivative = (error - previousError) / dt;
-	pidOutput = (Kp * error) + (Ki * integral) + (Kd * derivative);
+    static float integral = 0; // Utiliser static pour que la valeur reste entre les appels
+    integral += error * dt;
+    float derivative = (error - previousError) / dt;
+    float pidOutput = (Kp * error) + (Ki * integral) + (Kd * derivative);
+    return pidOutput;
 }
-
 
 //limit de PID
 

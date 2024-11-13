@@ -24,6 +24,9 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+#include "Encoder.h"
+#include "PID.h"
+
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -58,7 +61,7 @@ float derivative;
 float pidOutput;
 int32_t setpoint = 1000;  // Cible de position
 int32_t currentPosition;
-float dt = 0.01;  // 10 ms entre chaque calcul PID
+//float dt = 0.01;  // 10 ms entre chaque calcul PID
 
 /* USER CODE END PV */
 
@@ -148,8 +151,9 @@ int main(void)
 	  printf("Encoder Value: %ld\r\n", valueEnc);//affichage des valeurs
       float vitesse = GetMotorSpeed();
       printf("Encoder Value: %ld\r\n", vitesse);
-
-      printf("");
+      float speed_rpm = calculateInstantaneousSpeed(encoder_now, encoder_old, dt, encoder_resolution);
+         // Afficher la vitesse calculée
+      printf("Vitesse instantanée : %.2f RPM\n", speed_rpm);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

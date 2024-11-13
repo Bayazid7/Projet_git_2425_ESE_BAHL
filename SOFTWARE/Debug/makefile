@@ -64,8 +64,8 @@ all: main-build
 main-build: projet3A_le_bon.elf secondary-outputs
 
 # Tool invocations
-projet3A_le_bon.elf projet3A_le_bon.map: $(OBJS) $(USER_OBJS) D:\Users\Dell\Desktop\Projet_git_2425_ESE_BAHL\SOFTWARE\STM32G431CBUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "projet3A_le_bon.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Users\Dell\Desktop\Projet_git_2425_ESE_BAHL\SOFTWARE\STM32G431CBUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="projet3A_le_bon.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+projet3A_le_bon.elf projet3A_le_bon.map: $(OBJS) $(USER_OBJS) D:\Users\Dell\Desktop\anglais\Projet_git_2425_ESE_BAHL\SOFTWARE\STM32G431CBUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "projet3A_le_bon.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Users\Dell\Desktop\anglais\Projet_git_2425_ESE_BAHL\SOFTWARE\STM32G431CBUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="projet3A_le_bon.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

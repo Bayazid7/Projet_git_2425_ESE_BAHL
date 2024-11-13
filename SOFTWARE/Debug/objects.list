@@ -1,5 +1,6 @@
 "./Core/Src/Driver.o"
 "./Core/Src/Encoder.o"
+"./Core/Src/PID.o"
 "./Core/Src/adc.o"
 "./Core/Src/app_freertos.o"
 "./Core/Src/dma.o"

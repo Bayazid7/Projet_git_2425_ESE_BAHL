@@ -2,3 +2,4 @@
 ../Core/Src/Encoder.c:9:10:GetEncodeur	1
 ../Core/Src/Encoder.c:16:7:GetMotorSpeed	1
 ../Core/Src/Encoder.c:24:6:DirMoteur	2
+../Core/Src/Encoder.c:38:7:calculateInstantaneousSpeed	1
