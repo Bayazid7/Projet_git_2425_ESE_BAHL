@@ -1,0 +1,5 @@
+D:/Projet3A/ADXL343/SOFWARE/CMakeFiles/SOFWARE.dir
+D:/Projet3A/ADXL343/SOFWARE/CMakeFiles/edit_cache.dir
+D:/Projet3A/ADXL343/SOFWARE/CMakeFiles/rebuild_cache.dir
+D:/Projet3A/ADXL343/SOFWARE/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
+D:/Projet3A/ADXL343/SOFWARE/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir
