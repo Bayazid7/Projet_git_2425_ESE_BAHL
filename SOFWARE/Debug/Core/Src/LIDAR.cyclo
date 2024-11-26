@@ -1,0 +1,9 @@
+../Core/Src/LIDAR.c:16:12:LIDAR_UART_transmit	1
+../Core/Src/LIDAR.c:21:12:LIDAR_UART_poll_receive	1
+../Core/Src/LIDAR.c:27:12:LIDAR_UART_DMA_receive	1
+../Core/Src/LIDAR.c:35:5:LIDAR_start	1
+../Core/Src/LIDAR.c:45:5:LIDAR_stop	1
+../Core/Src/LIDAR.c:54:5:LIDAR_get_info	1
+../Core/Src/LIDAR.c:89:5:LIDAR_get_health_stat	1
+../Core/Src/LIDAR.c:114:5:LIDAR_restart	1
+../Core/Src/LIDAR.c:121:6:LIDAR_process_frame	6

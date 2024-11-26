@@ -18,7 +18,6 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "cmsis_os.h"
 #include "adc.h"
 #include "i2c.h"
 #include "tim.h"
@@ -53,17 +52,16 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-Moteur_InstanceDef_t moteur1 ;
-Moteur_InstanceDef_t moteur2 ;
-Robot_InstanceDef_t robot ;
-ADXL343_InstanceDef_t ADXL343 ;
-h_LIDAR_t lidar ;
+Moteur_InstanceDef_t moteur1;
+Moteur_InstanceDef_t moteur2;
+Robot_InstanceDef_t robot;
+ADXL343_InstanceDef_t ADXL343;
+h_LIDAR_t lidar;
 
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -72,8 +70,7 @@ void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN 0 */
 int __io_putchar(int chr)
 {
-  HAL_UART_Transmit(&huart3, (uint8_t *)&chr, 1, HAL_MAX_DELAY);
-  // HAL_UART_Transmit(&huart2, (uint8_t*)&chr,1, HAL_MAX_DELAY);
+  HAL_UART_Transmit(&huart4, (uint8_t *)&chr, 1, HAL_MAX_DELAY);
   return chr;
 }
 
@@ -109,40 +106,31 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_ADC1_Init();
-  MX_I2C1_Init();
   MX_TIM1_Init();
   MX_TIM3_Init();
   MX_TIM4_Init();
   MX_TIM16_Init();
   MX_UART4_Init();
   MX_USART3_UART_Init();
+  MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
- // ADXL343_Init(&ADXL343 , &hi2c1) ;
- // Moteur_Init(&moteur1, &htim1,TIM_CHANNEL_1,&htim3) ;
- // Moteur_Init(&moteur2, &htim1,TIM_CHANNEL_2,&htim4) ;
-  //Robot_Init(&robot , &moteur1 , &moteur2) ;
- // LIDAR_start(&lidar) ;
-  
+  //uint8_t res = ADXL343_Init(&ADXL343, &hi2c1);
+  //Moteur_Init(&moteur1, &htim1, TIM_CHANNEL_1, &htim3);
+ // Moteur_Init(&moteur2, &htim1, TIM_CHANNEL_2, &htim4);
+  //Robot_Init(&robot, &moteur1, &moteur2);
+ // LIDAR_start(&lidar);
+
   /* USER CODE END 2 */
-
-  /* Init scheduler */
- // osKernelInitialize();
-
-  /* Call init function for freertos objects (in cmsis_os2.c) */
-  //MX_FREERTOS_Init();
-
-  /* Start scheduler */
-  //osKernelStart();
-
-  /* We should never get here as control is now taken by the scheduler */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    HAL_GPIO_TogglePin(LED1_GPIO_Port,LED1_Pin);
-    HAL_GPIO_TogglePin(LED2_GPIO_Port,LED2_Pin);
-    HAL_GPIO_TogglePin(LED3_GPIO_Port,LED3_Pin);
+    printf("hello \r\n");
+    HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
+    HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
+    HAL_GPIO_TogglePin(LED3_GPIO_Port, LED3_Pin);
+    HAL_Delay(500);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -170,7 +158,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLM = RCC_PLLM_DIV2;
+  RCC_OscInitStruct.PLL.PLLM = RCC_PLLM_DIV4;
   RCC_OscInitStruct.PLL.PLLN = 85;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
