@@ -81,14 +81,10 @@ void Error_Handler(void);
 #define LIDAR_TX_GPIO_Port GPIOB
 #define M_EN_LIDAR_Pin GPIO_PIN_12
 #define M_EN_LIDAR_GPIO_Port GPIOB
-#define REV2_Pin GPIO_PIN_13
-#define REV2_GPIO_Port GPIOB
 #define REV1_Pin GPIO_PIN_14
 #define REV1_GPIO_Port GPIOB
 #define PHASEB2_Pin GPIO_PIN_6
 #define PHASEB2_GPIO_Port GPIOC
-#define FWD2_Pin GPIO_PIN_8
-#define FWD2_GPIO_Port GPIOA
 #define FWD1_Pin GPIO_PIN_9
 #define FWD1_GPIO_Port GPIOA
 #define PHASEB1_Pin GPIO_PIN_11

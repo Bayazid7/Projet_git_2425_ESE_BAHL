@@ -42,6 +42,23 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 
+#define ADXL343_DEVID_REG    0x00
+#define ADXL343_POWER_CTL    0x2D
+#define ADXL343_DATAX0       0x32
+
+#define M_PI 3.14159265358979323846
+
+#define ENCODER_CPR 11 // Résolution de l'encodeur (impulsions par tour)
+#define TIMER_MAX 65535  // Valeur maximale du compteur (16 bits)
+
+// Variables globales
+//int32_t last_counter = 0;  // Dernière valeur du compteur
+int32_t delta_counter = 0; // Différence entre les lectures
+//float motor_speed = 0;     // Vitesse en rad/s
+float SAMPLING_TIME = 0.1; // Intervalle de lecture en secondes (100 ms)
+//float sampling_time = 0.1; // Intervalle de lecture en secondes (100 ms)
+
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -58,6 +75,26 @@ Robot_InstanceDef_t robot;
 ADXL343_InstanceDef_t ADXL343;
 h_LIDAR_t lidar;
 
+
+uint8_t data[6];
+int16_t x, y, z;
+float x_g, y_g, z_g;
+
+int32_t last_counter = 0;  // Dernière valeur du compteur
+float motor_speed = 0;     // Vitesse calculée (en rad/s)
+const float pulses_per_revolution = 1632.67;  // Impulsions par tour après réduction
+float delta_t = 0.1;       // Intervalle de temps pour le calcul (en secondes)
+
+
+#define ENCODER_CPR 1632    // Nombre d'impulsions par tour de l'encodeur (encoder resolution)
+#define SAMPLING_TIME 0.1   // Temps d'échantillonnage en secondes (100 ms)
+
+// Déclarations globales
+int32_t last_encoder_value = 0;   // Dernière valeur du compteur de l'encodeur
+int32_t current_encoder_value = 0;  // Valeur actuelle du compteur de l'encodeur
+float motor_speed_rpm = 0.0;    // Vitesse du moteur en RPM
+
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -73,6 +110,69 @@ int __io_putchar(int chr)
   HAL_UART_Transmit(&huart4, (uint8_t *)&chr, 1, HAL_MAX_DELAY);
   return chr;
 }
+
+
+void ADXL343_Initit(void)
+{
+    uint8_t configData;
+
+    // Vérifier l'identifiant de l'ADXL343
+    HAL_I2C_Mem_Read(&hi2c1, ADXL343_ADDRESS, ADXL343_DEVID_REG, 1, &configData, 1, HAL_MAX_DELAY);
+    if (configData != 0xE5)
+    {
+        printf("Erreur : L'ADXL343 n'est pas détecté !\n");
+        while (1);
+    }
+    printf("ADXL343 détecté avec succès.\n");
+
+    // Configurer le capteur en mode mesure
+    configData = 0x08; // Mettre le bit mesure à 1
+    HAL_I2C_Mem_Write(&hi2c1, ADXL343_ADDRESS, ADXL343_POWER_CTL, 1, &configData, 1, HAL_MAX_DELAY);
+}
+
+void ADXL343_ReadAxes(void)
+{
+    // Lire les 6 octets (X0-X1, Y0-Y1, Z0-Z1)
+    HAL_I2C_Mem_Read(&hi2c1, ADXL343_ADDRESS, ADXL343_DATAX0, 1, data, 6, HAL_MAX_DELAY);
+
+    // Combiner les octets pour obtenir des valeurs 16 bits signées
+    x = (int16_t)((data[1] << 8) | data[0]);
+    y = (int16_t)((data[3] << 8) | data[2]);
+    z = (int16_t)((data[5] << 8) | data[4]);
+
+    // Convertir en unités "g" (1g = 9.8 m/s²)
+    x_g = x * 0.004;  // Sensibilité typique = 4mg/LSB
+    y_g = y * 0.004;
+    z_g = z * 0.004;
+}
+
+float calculateInstantaneousSpeed(int encoder_now, int encoder_old, float dt, int encoder_resolution)
+{
+    // Calcul de la différence d'impulsions
+    int pulse_diff = encoder_now - encoder_old;
+
+    // Calcul de la vitesse en impulsions par seconde
+    float speed_in_pulses_per_second = (float)pulse_diff / dt;
+
+    // Conversion de la vitesse en RPM (tours par minute)
+    float speed_rpm = (speed_in_pulses_per_second * 60) / encoder_resolution;
+
+    // Retourner la vitesse en RPM
+    return speed_rpm;
+}
+
+// Fonction d'affichage de la vitesse sur UART
+void Transmit_Speed(void)
+{
+    char buffer[50];  // Buffer pour stocker la chaîne à envoyer
+    // Formater la chaîne avec la vitesse en RPM
+    sprintf(buffer, "Vitesse: %.2f RPM\r\n", motor_speed_rpm);
+
+    // Transmettre la chaîne via UART (ici on utilise huart2, à ajuster selon votre configuration)
+    HAL_UART_Transmit(&huart4, (uint8_t *)buffer, strlen(buffer), HAL_MAX_DELAY);
+}
+
+
 
 /* USER CODE END 0 */
 
@@ -119,7 +219,14 @@ int main(void)
  // Moteur_Init(&moteur2, &htim1, TIM_CHANNEL_2, &htim4);
   //Robot_Init(&robot, &moteur1, &moteur2);
  // LIDAR_start(&lidar);
-
+    HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_ALL);  // Démarrer le Timer en mode encodeur
+    // HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+   //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
+  HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);  // Signal complémentaire (CH1N)
+  last_encoder_value = __HAL_TIM_GET_COUNTER(&htim1);
+    //HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
+  ADXL343_Initit();
+ // uint32_t last_time = HAL_GetTick();  // Temps de référence (ms)
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -127,10 +234,29 @@ int main(void)
   while (1)
   {
     printf("hello \r\n");
-    HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
-    HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
-    HAL_GPIO_TogglePin(LED3_GPIO_Port, LED3_Pin);
+      HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
+      HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
+      HAL_GPIO_TogglePin(LED3_GPIO_Port, LED3_Pin);
+      //HAL_Delay(500);
+
+    ADXL343_ReadAxes();
+    printf("X: %.2fg, Y: %.2fg, Z: %.2fg\n", x_g, y_g, z_g);
     HAL_Delay(500);
+    //Calculate_Speed();
+    //Transmit_Speed();
+    // Lecture de la valeur actuelle du compteur de l'encodeur
+            current_encoder_value = __HAL_TIM_GET_COUNTER(&htim1);
+
+            // Calcul de la vitesse instantanée en RPM
+            motor_speed_rpm = calculateInstantaneousSpeed(current_encoder_value, last_encoder_value, SAMPLING_TIME, ENCODER_CPR);
+
+            // Transmettre la vitesse calculée via UART
+            Transmit_Speed();
+
+            // Sauvegarder la valeur du compteur pour la prochaine itération
+            last_encoder_value = current_encoder_value;
+
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -184,6 +310,7 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+
 
 /* USER CODE END 4 */
 

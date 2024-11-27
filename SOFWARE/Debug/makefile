@@ -60,8 +60,8 @@ all: main-build
 main-build: SOFWARE.elf secondary-outputs
 
 # Tool invocations
-SOFWARE.elf SOFWARE.map: $(OBJS) $(USER_OBJS) D:\Projet3A\Projet_git_2425_ESE_BAHL\SOFWARE\STM32G431CBUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "SOFWARE.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Projet3A\Projet_git_2425_ESE_BAHL\SOFWARE\STM32G431CBUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SOFWARE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+SOFWARE.elf SOFWARE.map: $(OBJS) $(USER_OBJS) D:\Users\Dell\Desktop\anglais\Projet_git_2425_ESE_BAHL\SOFWARE\STM32G431CBUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "SOFWARE.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Users\Dell\Desktop\anglais\Projet_git_2425_ESE_BAHL\SOFWARE\STM32G431CBUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SOFWARE.map" -Wl,--gc-sections -static -u_printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

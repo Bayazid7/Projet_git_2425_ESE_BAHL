@@ -1,5 +1,9 @@
-../Core/Src/main.c:71:5:__io_putchar	16	static
-../Core/Src/main.c:83:5:main	8	static
-../Core/Src/main.c:145:6:SystemClock_Config	88	static
-../Core/Src/main.c:198:6:HAL_TIM_PeriodElapsedCallback	16	static
-../Core/Src/main.c:215:6:Error_Handler	4	static,ignoring_inline_asm
+../Core/Src/main.c:108:5:__io_putchar	16	static
+../Core/Src/main.c:115:6:ADXL343_Initit	32	static
+../Core/Src/main.c:133:6:ADXL343_ReadAxes	24	static
+../Core/Src/main.c:149:7:calculateInstantaneousSpeed	40	static
+../Core/Src/main.c:165:6:Transmit_Speed	64	static
+../Core/Src/main.c:183:5:main	40	static
+../Core/Src/main.c:271:6:SystemClock_Config	88	static
+../Core/Src/main.c:325:6:HAL_TIM_PeriodElapsedCallback	16	static
+../Core/Src/main.c:342:6:Error_Handler	4	static,ignoring_inline_asm
