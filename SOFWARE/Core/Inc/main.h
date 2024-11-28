@@ -109,8 +109,10 @@ void Error_Handler(void);
 #define PHASEA2_GPIO_Port GPIOB
 #define INT1_Pin GPIO_PIN_6
 #define INT1_GPIO_Port GPIOB
+#define INT1_EXTI_IRQn EXTI9_5_IRQn
 #define INT2_Pin GPIO_PIN_9
 #define INT2_GPIO_Port GPIOB
+#define INT2_EXTI_IRQn EXTI9_5_IRQn
 
 /* USER CODE BEGIN Private defines */
 

@@ -9,6 +9,8 @@
  * 
  */
 #include "ADXL343.h"
+#include <stdio.h>
+#include <string.h>
 
 static uint8_t ADXL343_I2C_Read(ADXL343_InstanceDef_t *Instance, uint8_t reg, uint8_t *buf, uint16_t size)
 {
@@ -36,8 +38,6 @@ static uint8_t ADXL343_I2C_Write(ADXL343_InstanceDef_t *Instance, uint8_t reg, u
     return 0;
 }
 
-#include <stdio.h>
-#include <string.h> // Pour memset si nécessaire
 
 uint8_t ADXL343_Init(ADXL343_InstanceDef_t *Instance, I2C_HandleTypeDef *hi2c)
 {
@@ -84,7 +84,7 @@ uint8_t ADXL343_Init(ADXL343_InstanceDef_t *Instance, I2C_HandleTypeDef *hi2c)
     }
 
     // Configuration des seuils de tap
-    configData = 20; // Exemple de seuil
+    configData = 1;
     if (ADXL343_I2C_Write(Instance, ADXL343_REG_THRESH_TAP, &configData, 1) != 0)
     {
         printf("Erreur : Échec de la configuration de THRESH_TAP.\r\n");
@@ -92,7 +92,7 @@ uint8_t ADXL343_Init(ADXL343_InstanceDef_t *Instance, I2C_HandleTypeDef *hi2c)
     }
 
     // Configuration de la durée
-    configData = 50; // Exemple de durée
+    configData = 5; // Exemple de durée
     if (ADXL343_I2C_Write(Instance, ADXL343_REG_DUR, &configData, 1) != 0)
     {
         printf("Erreur : Échec de la configuration de DUR.\r\n");
@@ -116,7 +116,7 @@ uint8_t ADXL343_Init(ADXL343_InstanceDef_t *Instance, I2C_HandleTypeDef *hi2c)
     }
 
     // Configuration de la carte d'interruption
-    configData = 0x80; // Exemple de configuration
+    configData = 0x40; // Exemple de configuration
     if (ADXL343_I2C_Write(Instance, ADXL343_REG_INT_MAP, &configData, 1) != 0)
     {
         printf("Erreur : Échec de la configuration de INT_MAP.\r\n");
@@ -124,7 +124,7 @@ uint8_t ADXL343_Init(ADXL343_InstanceDef_t *Instance, I2C_HandleTypeDef *hi2c)
     }
 
     // Activation des interruptions
-    configData = 0xC0; // Exemple pour activer les interruptions
+    configData = 0x40; // Exemple pour activer les interruptions
     if (ADXL343_I2C_Write(Instance, ADXL343_REG_INT_ENABLE, &configData, 1) != 0)
     {
         printf("Erreur : Échec de l'activation des interruptions.\r\n");
@@ -132,7 +132,7 @@ uint8_t ADXL343_Init(ADXL343_InstanceDef_t *Instance, I2C_HandleTypeDef *hi2c)
     }
 
     // Configuration du format des données
-    configData = 0x28; // Exemple de format : Full resolution, ±16g
+    configData = 0x14; // Exemple de format : Full resolution, ±16g
     if (ADXL343_I2C_Write(Instance, ADXL343_REG_DATA_FORMAT, &configData, 1) != 0)
     {
         printf("Erreur : Échec de la configuration de DATA_FORMAT.\r\n");
@@ -148,7 +148,7 @@ uint8_t ADXL343_SetOffset(ADXL343_InstanceDef_t *Instance, uint8_t ofsX, uint8_t
     uint8_t offsetData[3];
     offsetData[0] = ofsX;
     offsetData[1] = ofsY;
-    offsetData[2] = ofsZ;
+    offsetData[2] = ofsZ;s
 
     if (ADXL343_I2C_Write(Instance, ADXL343_REG_OFSX, offsetData, 3) != 0)
     {

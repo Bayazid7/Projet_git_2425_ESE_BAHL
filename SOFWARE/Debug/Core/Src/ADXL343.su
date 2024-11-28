@@ -1,5 +1,5 @@
-../Core/Src/ADXL343.c:13:16:ADXL343_I2C_Read	40	static
-../Core/Src/ADXL343.c:26:16:ADXL343_I2C_Write	40	static
+../Core/Src/ADXL343.c:15:16:ADXL343_I2C_Read	40	static
+../Core/Src/ADXL343.c:28:16:ADXL343_I2C_Write	40	static
 ../Core/Src/ADXL343.c:42:9:ADXL343_Init	24	static
 ../Core/Src/ADXL343.c:146:9:ADXL343_SetOffset	24	static
 ../Core/Src/ADXL343.c:160:9:ADXL343_GetOffset	32	static

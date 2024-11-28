@@ -114,22 +114,31 @@ int main(void)
   MX_USART3_UART_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
-  //uint8_t res = ADXL343_Init(&ADXL343, &hi2c1);
-  //Moteur_Init(&moteur1, &htim1, TIM_CHANNEL_1, &htim3);
- // Moteur_Init(&moteur2, &htim1, TIM_CHANNEL_2, &htim4);
+  ADXL343_Init(&ADXL343, &hi2c1);
+ // Moteur_Init(&moteur1, &htim1, TIM_CHANNEL_1, &htim3);
+  //Moteur_Start(&moteur1);
+
+ //Moteur_Init(&moteur2, &htim1, TIM_CHANNEL_2, &htim4);
   //Robot_Init(&robot, &moteur1, &moteur2);
  // LIDAR_start(&lidar);
+ //HAL_Delay(500);
+  //Moteur_SetDirection(&moteur1, MOTEUR_RECULER);
 
+  //Moteur_Stop(&moteur1) ;
+  printf("============ Projet 3A ================== \r\n") ;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
     printf("hello \r\n");
     HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
     HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
     HAL_GPIO_TogglePin(LED3_GPIO_Port, LED3_Pin);
+    Moteur_UpdatePosition(&moteur1);
+    printf("LA POSITION EST : %ld \n",moteur1.position);
     HAL_Delay(500);
     /* USER CODE END WHILE */
 
@@ -184,6 +193,13 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+  if(GPIO_Pin == INT2_Pin) {
+	  printf("HELLO from PIN2 \n");
+  }
+}
+
 
 /* USER CODE END 4 */
 

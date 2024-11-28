@@ -1,5 +1,5 @@
-../Core/Src/ADXL343.c:13:16:ADXL343_I2C_Read	5
-../Core/Src/ADXL343.c:26:16:ADXL343_I2C_Write	5
+../Core/Src/ADXL343.c:15:16:ADXL343_I2C_Read	5
+../Core/Src/ADXL343.c:28:16:ADXL343_I2C_Write	5
 ../Core/Src/ADXL343.c:42:9:ADXL343_Init	14
 ../Core/Src/ADXL343.c:146:9:ADXL343_SetOffset	2
 ../Core/Src/ADXL343.c:160:9:ADXL343_GetOffset	2
