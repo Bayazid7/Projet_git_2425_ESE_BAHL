@@ -30,6 +30,8 @@
 #include "Robot.h"
 #include "Moteur.h"
 #include "LIDAR.h"
+#include "Encodeur.h"
+#include "MoteurPWM.h"
 #include <stdio.h>
 
 /* USER CODE END Includes */
@@ -92,7 +94,8 @@ float delta_t = 0.1;       // Intervalle de temps pour le calcul (en secondes)
 // Déclarations globales
 int32_t last_encoder_value = 0;   // Dernière valeur du compteur de l'encodeur
 int32_t current_encoder_value = 0;  // Valeur actuelle du compteur de l'encodeur
-float motor_speed_rpm = 0.0;    // Vitesse du moteur en RPM
+
+
 
 
 /* USER CODE END PV */
@@ -146,31 +149,6 @@ void ADXL343_ReadAxes(void)
     z_g = z * 0.004;
 }
 
-float calculateInstantaneousSpeed(int encoder_now, int encoder_old, float dt, int encoder_resolution)
-{
-    // Calcul de la différence d'impulsions
-    int pulse_diff = encoder_now - encoder_old;
-
-    // Calcul de la vitesse en impulsions par seconde
-    float speed_in_pulses_per_second = (float)pulse_diff / dt;
-
-    // Conversion de la vitesse en RPM (tours par minute)
-    float speed_rpm = (speed_in_pulses_per_second * 60) / encoder_resolution;
-
-    // Retourner la vitesse en RPM
-    return speed_rpm;
-}
-
-// Fonction d'affichage de la vitesse sur UART
-void Transmit_Speed(void)
-{
-    char buffer[50];  // Buffer pour stocker la chaîne à envoyer
-    // Formater la chaîne avec la vitesse en RPM
-    sprintf(buffer, "Vitesse: %.2f RPM\r\n", motor_speed_rpm);
-
-    // Transmettre la chaîne via UART (ici on utilise huart2, à ajuster selon votre configuration)
-    HAL_UART_Transmit(&huart4, (uint8_t *)buffer, strlen(buffer), HAL_MAX_DELAY);
-}
 
 
 
@@ -219,12 +197,13 @@ int main(void)
  // Moteur_Init(&moteur2, &htim1, TIM_CHANNEL_2, &htim4);
   //Robot_Init(&robot, &moteur1, &moteur2);
  // LIDAR_start(&lidar);
-    HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_ALL);  // Démarrer le Timer en mode encodeur
-    // HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+    //HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_ALL);  // Démarrer le Timer en mode encodeur
+    //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
    //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
-  HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);  // Signal complémentaire (CH1N)
-  last_encoder_value = __HAL_TIM_GET_COUNTER(&htim1);
+ // HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);  // Signal complémentaire (CH1N)
+  //nbCounter = __HAL_TIM_GET_COUNTER(&htim1);
     //HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
+  void avance();
   ADXL343_Initit();
  // uint32_t last_time = HAL_GetTick();  // Temps de référence (ms)
   /* USER CODE END 2 */
@@ -242,19 +221,18 @@ int main(void)
     ADXL343_ReadAxes();
     printf("X: %.2fg, Y: %.2fg, Z: %.2fg\n", x_g, y_g, z_g);
     HAL_Delay(500);
-    //Calculate_Speed();
-    //Transmit_Speed();
-    // Lecture de la valeur actuelle du compteur de l'encodeur
-            current_encoder_value = __HAL_TIM_GET_COUNTER(&htim1);
 
-            // Calcul de la vitesse instantanée en RPM
-            motor_speed_rpm = calculateInstantaneousSpeed(current_encoder_value, last_encoder_value, SAMPLING_TIME, ENCODER_CPR);
+    printf("Moteur Avance\r\n");
+    //void avance();
+    StartEncodeur1();
+    StartEncodeur2();
+    HAL_Delay(100);
+    printf("Moteur Recule\r\n");
+    void recule();
+    StartEncodeur1();
+    StartEncodeur2();
 
-            // Transmettre la vitesse calculée via UART
-            Transmit_Speed();
 
-            // Sauvegarder la valeur du compteur pour la prochaine itération
-            last_encoder_value = current_encoder_value;
 
 
     /* USER CODE END WHILE */
