@@ -1,6 +1,0 @@
-../Core/Src/Moteur.c:14:6:Moteur_Init	1
-../Core/Src/Moteur.c:27:6:Moteur_SetSpeed	7
-../Core/Src/Moteur.c:36:6:Moteur_SetDirection	3
-../Core/Src/Moteur.c:59:6:Moteur_Start	1
-../Core/Src/Moteur.c:65:6:Moteur_Stop	1
-../Core/Src/Moteur.c:71:6:Moteur_UpdatePosition	1

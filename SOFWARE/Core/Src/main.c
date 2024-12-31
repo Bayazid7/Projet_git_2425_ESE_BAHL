@@ -27,10 +27,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "ADXL343.h"
-#include "Robot.h"
-#include "Moteur.h"
 #include "LIDAR.h"
-#include "Encodeur.h"
 #include "MoteurPWM.h"
 #include <stdio.h>
 
@@ -71,9 +68,13 @@ float SAMPLING_TIME = 0.1; // Intervalle de lecture en secondes (100 ms)
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-Moteur_InstanceDef_t moteur1;
-Moteur_InstanceDef_t moteur2;
-Robot_InstanceDef_t robot;
+
+
+Moteur_HandleTypeDef moteur_droit;
+Moteur_HandleTypeDef moteur_gauche;
+Moteur_HandleTypeDef robot;
+
+//Robot_InstanceDef_t robot;
 ADXL343_InstanceDef_t ADXL343;
 h_LIDAR_t lidar;
 
@@ -193,19 +194,25 @@ int main(void)
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
   //uint8_t res = ADXL343_Init(&ADXL343, &hi2c1);
-  //Moteur_Init(&moteur1, &htim1, TIM_CHANNEL_1, &htim3);
- // Moteur_Init(&moteur2, &htim1, TIM_CHANNEL_2, &htim4);
-  //Robot_Init(&robot, &moteur1, &moteur2);
- // LIDAR_start(&lidar);
     //HAL_TIM_Encoder_Start(&htim3, TIM_CHANNEL_ALL);  // Démarrer le Timer en mode encodeur
     //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
    //HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
  // HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);  // Signal complémentaire (CH1N)
   //nbCounter = __HAL_TIM_GET_COUNTER(&htim1);
     //HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
-  void avance();
-  ADXL343_Initit();
- // uint32_t last_time = HAL_GetTick();  // Temps de référence (ms)
+
+
+  Moteur_init(&moteur_droit, &htim1, TIM_CHANNEL_1);
+  Moteur_init(&moteur_gauche, &htim1, TIM_CHANNEL_2);
+  Moteur_start(&moteur_droit);
+  Moteur_start(&moteur_gauche);
+  robot.moteur_droite = &moteur_droit;
+  robot.moteur_gauche = &moteur_gauche;
+  robot.theta = 0;
+  robot.omega = 0;
+  robot.vitesse = 0;
+  Robot_setAngle(&robot, 80);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -213,24 +220,11 @@ int main(void)
   while (1)
   {
     printf("hello \r\n");
+
       HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
       HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
       HAL_GPIO_TogglePin(LED3_GPIO_Port, LED3_Pin);
-      //HAL_Delay(500);
 
-    ADXL343_ReadAxes();
-    printf("X: %.2fg, Y: %.2fg, Z: %.2fg\n", x_g, y_g, z_g);
-    HAL_Delay(500);
-
-    printf("Moteur Avance\r\n");
-    //void avance();
-    StartEncodeur1();
-    StartEncodeur2();
-    HAL_Delay(100);
-    printf("Moteur Recule\r\n");
-    void recule();
-    StartEncodeur1();
-    StartEncodeur2();
 
 
 

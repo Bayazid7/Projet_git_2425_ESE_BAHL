@@ -33,8 +33,7 @@ Core/Src/MoteurPWM.o: ../Core/Src/MoteurPWM.c ../Core/Inc/MoteurPWM.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h \
  ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h \
- ../Core/Inc/tim.h ../Core/Inc/main.h ../Core/Inc/tim.h \
- ../Core/Inc/usart.h
+ ../Core/Inc/tim.h ../Core/Inc/main.h
 ../Core/Inc/MoteurPWM.h:
 ../Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g4xx.h:
 ../Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g431xx.h:
@@ -72,5 +71,3 @@ Core/Src/MoteurPWM.o: ../Core/Src/MoteurPWM.c ../Core/Inc/MoteurPWM.h \
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h:
 ../Core/Inc/tim.h:
 ../Core/Inc/main.h:
-../Core/Inc/tim.h:
-../Core/Inc/usart.h:

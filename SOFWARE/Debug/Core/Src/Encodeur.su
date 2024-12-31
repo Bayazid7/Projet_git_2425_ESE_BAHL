@@ -1,6 +1,0 @@
-../Core/Src/Encodeur.c:18:6:Transmit_Speed1	64	static
-../Core/Src/Encodeur.c:28:6:calculate_speed1	16	static
-../Core/Src/Encodeur.c:36:6:StartEncodeur1	8	static
-../Core/Src/Encodeur.c:44:6:Transmit_Speed2	64	static
-../Core/Src/Encodeur.c:54:6:calculate_speed2	16	static
-../Core/Src/Encodeur.c:62:6:StartEncodeur2	8	static

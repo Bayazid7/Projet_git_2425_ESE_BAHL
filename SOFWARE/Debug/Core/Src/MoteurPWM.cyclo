@@ -1,6 +1,6 @@
-../Core/Src/MoteurPWM.c:7:6:Moteur_Direction	6
-../Core/Src/MoteurPWM.c:26:6:stop	1
-../Core/Src/MoteurPWM.c:31:6:avance	1
-../Core/Src/MoteurPWM.c:36:6:recule	1
-../Core/Src/MoteurPWM.c:40:6:Droit	1
-../Core/Src/MoteurPWM.c:44:6:Gauche	1
+../Core/Src/MoteurPWM.c:4:6:Moteur_init	1
+../Core/Src/MoteurPWM.c:17:6:Moteur_setSpeed	12
+../Core/Src/MoteurPWM.c:34:6:Moteur_setDirection	3
+../Core/Src/MoteurPWM.c:58:6:Moteur_start	1
+../Core/Src/MoteurPWM.c:63:6:Moteur_stop	1
+../Core/Src/MoteurPWM.c:68:6:Robot_setAngle	5
