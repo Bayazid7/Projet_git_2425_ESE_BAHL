@@ -18,11 +18,13 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "cmsis_os.h"
 #include "adc.h"
 #include "i2c.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+#include "FreeRTOS.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -56,6 +58,10 @@ int32_t delta_counter = 0; // Différence entre les lectures
 //float motor_speed = 0;     // Vitesse en rad/s
 float SAMPLING_TIME = 0.1; // Intervalle de lecture en secondes (100 ms)
 //float sampling_time = 0.1; // Intervalle de lecture en secondes (100 ms)
+
+TaskHandle_t  h_task_angle;
+TaskHandle_t  h_task_bord;
+uint8_t angle;
 
 
 /* USER CODE END PD */
@@ -103,6 +109,7 @@ int32_t current_encoder_value = 0;  // Valeur actuelle du compteur de l'encodeur
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -115,6 +122,28 @@ int __io_putchar(int chr)
   return chr;
 }
 
+
+
+/*** Task ****/
+
+void task_angle(void * unused)
+{
+for(;;) {
+ ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+ Robot_setAngle(&robot, angle);
+}
+}
+void task_Bord(void * unused)
+{
+for(;;) {
+ ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+ Moteur_stop(&moteur_droit);
+ Moteur_stop(&moteur_gauche);
+
+ Moteur_setSpeed(&moteur_droit, 120);
+ Moteur_setSpeed(&moteur_gauche, 80);
+}
+}
 
 void ADXL343_Initit(void)
 {
@@ -201,6 +230,9 @@ int main(void)
   //nbCounter = __HAL_TIM_GET_COUNTER(&htim1);
     //HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
 
+  xTaskCreate(task_angle, "angle", 256, NULL, 1, &h_task_angle);
+  xTaskCreate(task_Bord, "Bord", 256, NULL, 2, &h_task_bord);
+
 
   Moteur_init(&moteur_droit, &htim1, TIM_CHANNEL_1);
   Moteur_init(&moteur_gauche, &htim1, TIM_CHANNEL_2);
@@ -214,6 +246,14 @@ int main(void)
   Robot_setAngle(&robot, 80);
 
   /* USER CODE END 2 */
+
+  /* Call init function for freertos objects (in cmsis_os2.c) */
+  MX_FREERTOS_Init();
+
+  /* Start scheduler */
+  osKernelStart();
+
+  /* We should never get here as control is now taken by the scheduler */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
