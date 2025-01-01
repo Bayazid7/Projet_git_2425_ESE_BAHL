@@ -1,0 +1,4 @@
+../Core/Src/Moustache.c:19:6:Moustache_Init	16	static
+../Core/Src/Moustache.c:26:6:Moustache_HandleInterrupt	32	static,ignoring_inline_asm
+../Core/Src/Moustache.c:48:13:CB_OUT1_Task	24	static
+../Core/Src/Moustache.c:66:13:CB_OUT2_Task	24	static

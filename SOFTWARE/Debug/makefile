@@ -38,34 +38,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := projet3A_le_bon
+BUILD_ARTIFACT_NAME := robot_chat_4
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-projet3A_le_bon.elf \
+robot_chat_4.elf \
 
 MAP_FILES += \
-projet3A_le_bon.map \
+robot_chat_4.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-projet3A_le_bon.list \
+robot_chat_4.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: projet3A_le_bon.elf secondary-outputs
+main-build: robot_chat_4.elf secondary-outputs
 
 # Tool invocations
-projet3A_le_bon.elf projet3A_le_bon.map: $(OBJS) $(USER_OBJS) F:\Projet_3A\projet3A_le_bon\STM32G431CBUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "projet3A_le_bon.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"F:\Projet_3A\projet3A_le_bon\STM32G431CBUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="projet3A_le_bon.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+robot_chat_4.elf robot_chat_4.map: $(OBJS) $(USER_OBJS) C:\Users\bayazid\Desktop\ROBOT_CHAT_4\robot_chat_4\STM32G431CBUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "robot_chat_4.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\bayazid\Desktop\ROBOT_CHAT_4\robot_chat_4\STM32G431CBUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="robot_chat_4.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -74,14 +74,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-projet3A_le_bon.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "projet3A_le_bon.list"
+robot_chat_4.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "robot_chat_4.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) default.size.stdout projet3A_le_bon.elf projet3A_le_bon.list projet3A_le_bon.map
+	-$(RM) default.size.stdout robot_chat_4.elf robot_chat_4.list robot_chat_4.map
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
