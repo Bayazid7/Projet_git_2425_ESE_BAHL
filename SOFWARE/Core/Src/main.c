@@ -18,7 +18,8 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "adc.h"
+#include "cmsis_os.h"
+#include "dma.h"
 #include "i2c.h"
 #include "tim.h"
 #include "usart.h"
@@ -26,12 +27,13 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "ADXL343.h"
-#include "Robot.h"
-#include "Moteur.h"
-#include "LIDAR.h"
 #include <stdio.h>
-
+#include "tab.h"
+#include "lidar_X2_driver.h"
+#include "YLIDARX2.h"
+#include "MoteurPWM.h"
+#include "Moustache.h"
+#include "ADXL343.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -52,28 +54,42 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-Moteur_InstanceDef_t moteur1;
-Moteur_InstanceDef_t moteur2;
-Robot_InstanceDef_t robot;
-ADXL343_InstanceDef_t ADXL343;
 h_LIDAR_t lidar;
+extern uint8_t sendTab[TABLE_SIZE];
+extern uint8_t flagDMA;
+uint8_t flag = 0;
 
+// FreeRTOS Task Handles
+TaskHandle_t lidarTaskHandle = NULL;
+TaskHandle_t ledBlinkTaskHandle = NULL;
+TaskHandle_t h_task_angle = NULL;
+TaskHandle_t h_task_bord = NULL;
+static TaskHandle_t TapDetected_task = NULL;
+TaskHandle_t modeTaskHandle = NULL;
+
+// Robot and peripheral structures
+Moteur_HandleTypeDef moteur_droit;
+Moteur_HandleTypeDef moteur_gauche;
+h_Robot robot;
+float angle;
+ADXL343_InstanceDef_t ADXL343;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
-
+int __io_putchar(int chr);
+void lidarTask(void *pvParameters);
+void ledBlinkTask(void *pvParameters);
+void task_angle(void *unused);
+void task_Bord(void *unused);
+void TapDetected(void *param);
+void modeChange(void *param);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-int __io_putchar(int chr)
-{
-  HAL_UART_Transmit(&huart4, (uint8_t *)&chr, 1, HAL_MAX_DELAY);
-  return chr;
-}
-
 /* USER CODE END 0 */
 
 /**
@@ -105,7 +121,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_ADC1_Init();
+  MX_DMA_Init();
   MX_TIM1_Init();
   MX_TIM3_Init();
   MX_TIM4_Init();
@@ -114,26 +130,56 @@ int main(void)
   MX_USART3_UART_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
+	// Peripheral Initialization
+	LIDAR_Init(&lidar, &huart4);
+	LIDAR_start(&lidar);
+	Moteur_init(&moteur_droit, &htim1, TIM_CHANNEL_1);
+	Moteur_init(&moteur_gauche, &htim1, TIM_CHANNEL_2);
+	Robot_Init(&robot, &moteur_droit, &moteur_gauche);
+	Robot_Start(&robot);
+	Moustache_Init();
+	ADXL343_Init(&ADXL343, &hi2c1);
 
-  printf("============ Projet 3A ================== \r\n") ;
-  
-  ADXL343_Init(&ADXL343, &hi2c1);
+	// Start DMA transmission
+	HAL_UART_Transmit_DMA(&huart4, sendTab, TABLE_SIZE);
+	printf("Transmission Start ... \n");
+
+	// Create FreeRTOS tasks
+	xTaskCreate(lidarTask, "Lidar Task", 256, NULL, 2, &lidarTaskHandle);
+	xTaskCreate(ledBlinkTask, "LED Blink Task", 128, NULL, 3, &ledBlinkTaskHandle);
+	xTaskCreate(task_angle, "Angle Task", 256, NULL, 4, &h_task_angle);
+	xTaskCreate(modeChange, "mode", 128, NULL, 5, &modeTaskHandle);
+	xTaskCreate(TapDetected, "TapDetected", 128, NULL, 5, &TapDetected_task);
+
   /* USER CODE END 2 */
+
+  /* Call init function for freertos objects (in cmsis_os2.c) */
+  MX_FREERTOS_Init();
+
+  /* Start scheduler */
+  osKernelStart();
+
+  /* We should never get here as control is now taken by the scheduler */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
-  {
 
-    printf("hello \r\n");
-    HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
-    HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
-    HAL_GPIO_TogglePin(LED3_GPIO_Port, LED3_Pin);
-    Moteur_UpdatePosition(&moteur1);
+	while (1)
+	{
+		//lidar_scan_loop();
+		/*if(flag == 1){
+			for(int i=0 ; i<POINT_BUFF_SIZE ;i++)
+			{
+				printf("le point %d a angle %f et diastance %f \r\n",i,lidar.point[i].Angle,lidar.point[i].Distance);
+				printf("FSA = %d,LSA=%d , LSN=%d , ind=%d \r\n",lidar.processing.LSA,lidar.processing.LSA,lidar.processing.LSN,lidar.processing.idx);
+			}
+			flag = 0 ;
+		}*/
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-  }
+	}
   /* USER CODE END 3 */
 }
 
@@ -183,16 +229,105 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
-{
-  uint8_t buf ;
-  HAL_I2C_Mem_Read(hi2c1, ADXL343_ADDRESS, ADXL343_REG_INT_SOURCE, I2C_MEMADD_SIZE_8BIT, &buf, 1, HAL_MAX_DELAY);
-  if(GPIO_Pin == INT2_Pin) {
-	  printf("HELLO from PIN2 \n");
-  }
+
+/* Lidar Task */
+void lidarTask(void *pvParameters) {
+	for (;;) {
+		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+		flagDMA++;
+		LIDAR_process_frame(&lidar);
+		xTaskNotifyGive(h_task_angle);
+	}
 }
 
+/* LED Blink Task */
+void ledBlinkTask(void *pvParameters) {
+	for (;;) {
+		HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
+		HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
+		HAL_GPIO_TogglePin(LED3_GPIO_Port, LED3_Pin);
+		vTaskDelay(pdMS_TO_TICKS(500));
+	}
+}
 
+/* Task to process LIDAR angles */
+void task_angle(void *unused) {
+	for (;;) {
+		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+
+		float angleSum = 0.0f;
+		uint16_t validPoints = 0;
+
+		for (uint16_t i = 0; i < 360; ++i) {
+			if (lidar.point[i].Distance > 0) {
+				angleSum += lidar.point[i].Angle;
+				validPoints++;
+			}
+		}
+
+		if (validPoints > 0) {
+			angle = angleSum / validPoints;
+		}
+		Robot_setAngle(&robot, angle);
+	}
+}
+
+/* mode change Task */
+void modeChange(void *param) {
+	uint32_t ulNotificationValue;
+
+	for(;;) {
+		ulNotificationValue = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+		if (ulNotificationValue != 0){
+			if(robot.mode == 1)
+			{
+				robot.mode = 1;
+			}
+			else
+			{
+				robot.mode = 0;
+			}
+		}
+	}
+}
+/* Tap Detection Task */
+void TapDetected(void *param) {
+	uint32_t ulNotificationValue;
+
+	for(;;) {
+		ulNotificationValue = ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+		if (ulNotificationValue != 0) {
+			uint8_t buf;
+			HAL_I2C_Mem_Read(&hi2c1, ADXL343_ADDRESS, ADXL343_REG_INT_SOURCE,
+					I2C_MEMADD_SIZE_8BIT, &buf, 1, HAL_MAX_DELAY);
+			Robot_Stop(&robot);
+		}
+	}
+}
+
+/*Fonctions CALLBACK*/
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	if(GPIO_Pin==CHAT_SOURIS_Pin)
+	{
+		BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+		vTaskNotifyGiveFromISR(modeTaskHandle, &xHigherPriorityTaskWoken);
+		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+	}
+	Moustache_HandleInterrupt(GPIO_Pin);
+}
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+	vTaskNotifyGiveFromISR(lidarTaskHandle, &xHigherPriorityTaskWoken);
+	portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+}
+int __io_putchar(int chr)
+{
+	HAL_UART_Transmit(&huart3, (uint8_t *)&chr, 1, HAL_MAX_DELAY);
+	return chr;
+}
 /* USER CODE END 4 */
 
 /**
@@ -223,11 +358,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
-  /* User can add his own implementation to report the HAL error return state */
-  __disable_irq();
-  while (1)
-  {
-  }
+	/* User can add his own implementation to report the HAL error return state */
+	__disable_irq();
+	while (1)
+	{
+	}
   /* USER CODE END Error_Handler_Debug */
 }
 
@@ -242,7 +377,7 @@ void Error_Handler(void)
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */
-  /* User can add his own implementation to report the file name and line number,
+	/* User can add his own implementation to report the file name and line number,
      ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
   /* USER CODE END 6 */
 }

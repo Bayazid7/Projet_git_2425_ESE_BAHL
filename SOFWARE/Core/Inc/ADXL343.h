@@ -12,7 +12,7 @@
 #define __ADXL343__
 
 #include <stdio.h>
-#include "stm32g4xx_hal.h"
+#include "i2c.h"
 
 #define ADXL343_ADDRESS (0x53 << 1)
 #define ADXL343_DEVID (0xe5)
@@ -39,15 +39,16 @@
 #define ADXL343_REG_DATAZ0 (0x36)
 #define ADXL343_REG_DATAZ1 (0x37)
 
+#define ADXL343I2C hi2c1
 typedef struct
 {
 	I2C_HandleTypeDef *hi2c;
 	uint8_t range;
 	uint8_t rate;
 	uint8_t devID;
-	uint16_t accX;
-	uint16_t accY;
-	uint16_t accZ;
+	float accX;
+	float  accY;
+	float  accZ;
 
 } ADXL343_InstanceDef_t;
 
@@ -79,16 +80,12 @@ typedef enum
 	RANGE_16G = 0b11
 } ADXL343_range_t;
 
-uint8_t ADXL343_Init(ADXL343_InstanceDef_t *Instance, I2C_HandleTypeDef *hi2c);
+uint8_t ADXL343_Init(ADXL343_InstanceDef_t *Instance,I2C_HandleTypeDef *hi2c);
 uint8_t ADXL343_SetOffset(ADXL343_InstanceDef_t *Instance, uint8_t ofsX, uint8_t ofsY, uint8_t ofsZ);
 uint8_t ADXL343_GetOffset(ADXL343_InstanceDef_t *Instance, uint8_t *ofsX, uint8_t *ofsY, uint8_t *ofsZ);
-uint8_t ADXL343_SetFIFO(ADXL343_InstanceDef_t *Instance, uint8_t mode);
 uint8_t ADXL343_ReadAcceleration(ADXL343_InstanceDef_t *Instance);
 uint8_t ADXL343_SetTapThreshold(ADXL343_InstanceDef_t *Instance, uint8_t threshold);
 uint8_t ADXL343_SetTapDuration(ADXL343_InstanceDef_t *Instance, uint8_t duration);
-uint8_t ADXL343_SetInterrupt(ADXL343_InstanceDef_t *Instance);
-uint8_t ADXL343_ClearInterrupt(ADXL343_InstanceDef_t *Instance);
-uint8_t ADXL343_ReadInterruptSource(ADXL343_InstanceDef_t *Instance);
-uint8_t ADXL343_HandleTapInterrupt(ADXL343_InstanceDef_t *Instance);
+uint8_t ADXL343_ClearInterrupt(void);
 
 #endif

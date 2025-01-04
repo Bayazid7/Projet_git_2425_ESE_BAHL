@@ -1,0 +1,5 @@
+../Core/Src/YLIDARX2.c:19:6:LIDAR_Init	16	static
+../Core/Src/YLIDARX2.c:30:14:calculAngle	40	static
+../Core/Src/YLIDARX2.c:45:19:LIDAR_start	16	static
+../Core/Src/YLIDARX2.c:51:6:process	40	static
+../Core/Src/YLIDARX2.c:107:6:LIDAR_process_frame	16	static
