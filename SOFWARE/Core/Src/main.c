@@ -131,7 +131,7 @@ int main(void)
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
 	// Peripheral Initialization
-	LIDAR_Init(&lidar, &huart4);
+	LIDAR_Init(&lidar, &huart3);
 	LIDAR_start(&lidar);
 	Moteur_init(&moteur_droit, &htim1, TIM_CHANNEL_1);
 	Moteur_init(&moteur_gauche, &htim1, TIM_CHANNEL_2);
@@ -139,14 +139,9 @@ int main(void)
 	Robot_Start(&robot);
 	Moustache_Init();
 	ADXL343_Init(&ADXL343, &hi2c1);
-
-	// Start DMA transmission
-	HAL_UART_Transmit_DMA(&huart4, sendTab, TABLE_SIZE);
-	printf("Transmission Start ... \n");
-
-	// Create FreeRTOS tasks
+	//Create FreeRTOS tasks
 	xTaskCreate(lidarTask, "Lidar Task", 256, NULL, 2, &lidarTaskHandle);
-	xTaskCreate(ledBlinkTask, "LED Blink Task", 128, NULL, 3, &ledBlinkTaskHandle);
+	xTaskCreate(ledBlinkTask, "LED Blink Task", 256, NULL,3, &ledBlinkTaskHandle);
 	xTaskCreate(task_angle, "Angle Task", 256, NULL, 4, &h_task_angle);
 	xTaskCreate(modeChange, "mode", 128, NULL, 5, &modeTaskHandle);
 	xTaskCreate(TapDetected, "TapDetected", 128, NULL, 5, &TapDetected_task);
@@ -166,6 +161,11 @@ int main(void)
 
 	while (1)
 	{
+		HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
+		HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
+		HAL_GPIO_TogglePin(LED3_GPIO_Port, LED3_Pin);
+		HAL_Delay(500);
+		//vTaskDelay(pdMS_TO_TICKS(500));
 		//lidar_scan_loop();
 		/*if(flag == 1){
 			for(int i=0 ; i<POINT_BUFF_SIZE ;i++)
@@ -230,17 +230,18 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 
-/* Lidar Task */
+//Lidar Task
 void lidarTask(void *pvParameters) {
 	for (;;) {
 		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 		flagDMA++;
 		LIDAR_process_frame(&lidar);
+		printf("angle = give \n") ;
 		xTaskNotifyGive(h_task_angle);
 	}
 }
 
-/* LED Blink Task */
+//LED Blink Task
 void ledBlinkTask(void *pvParameters) {
 	for (;;) {
 		HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
@@ -249,8 +250,7 @@ void ledBlinkTask(void *pvParameters) {
 		vTaskDelay(pdMS_TO_TICKS(500));
 	}
 }
-
-/* Task to process LIDAR angles */
+//Task to process LIDAR angles
 void task_angle(void *unused) {
 	for (;;) {
 		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
@@ -268,11 +268,12 @@ void task_angle(void *unused) {
 		if (validPoints > 0) {
 			angle = angleSum / validPoints;
 		}
+		printf("angle = %f \n",angle) ;
 		Robot_setAngle(&robot, angle);
 	}
 }
 
-/* mode change Task */
+//mode change Task
 void modeChange(void *param) {
 	uint32_t ulNotificationValue;
 
@@ -290,7 +291,7 @@ void modeChange(void *param) {
 		}
 	}
 }
-/* Tap Detection Task */
+//Tap Detection Task
 void TapDetected(void *param) {
 	uint32_t ulNotificationValue;
 
@@ -299,13 +300,13 @@ void TapDetected(void *param) {
 		if (ulNotificationValue != 0) {
 			uint8_t buf;
 			HAL_I2C_Mem_Read(&hi2c1, ADXL343_ADDRESS, ADXL343_REG_INT_SOURCE,
-					I2C_MEMADD_SIZE_8BIT, &buf, 1, HAL_MAX_DELAY);
+			I2C_MEMADD_SIZE_8BIT, &buf, 1, HAL_MAX_DELAY);
 			Robot_Stop(&robot);
 		}
 	}
 }
 
-/*Fonctions CALLBACK*/
+//Fonctions CALLBACK
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
@@ -319,13 +320,14 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 }
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
+	printf("angle = give \n") ;
 	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 	vTaskNotifyGiveFromISR(lidarTaskHandle, &xHigherPriorityTaskWoken);
 	portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 }
 int __io_putchar(int chr)
 {
-	HAL_UART_Transmit(&huart3, (uint8_t *)&chr, 1, HAL_MAX_DELAY);
+	HAL_UART_Transmit(&huart4, (uint8_t *)&chr, 1, HAL_MAX_DELAY);
 	return chr;
 }
 /* USER CODE END 4 */

@@ -13,7 +13,7 @@ void Moteur_init(Moteur_HandleTypeDef* moteur, TIM_HandleTypeDef* timer, uint32_
 
 void Moteur_setSpeed(Moteur_HandleTypeDef* moteur, int speed)
 {
-    int vitesse = (int)(speed * 4250 / 290);
+    int vitesse = (int)(speed *8500 / 290);
     moteur->vitesse = speed;
 
     if (speed >= 0)
@@ -68,7 +68,7 @@ void Moteur_recule(Moteur_HandleTypeDef* moteur)
 void Robot_Start(h_Robot* robot)
 {
 	Moteur_start(robot->moteur_droite) ;
-	Moteur_start(robot->moteur_droite) ;
+	Moteur_start(robot->moteur_gauche) ;
 	robot->direction = 'A' ;
 }
 void Robot_Stop(h_Robot* robot)
