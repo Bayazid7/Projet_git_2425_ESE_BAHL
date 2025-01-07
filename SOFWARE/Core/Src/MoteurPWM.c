@@ -18,13 +18,13 @@ void Moteur_setSpeed(Moteur_HandleTypeDef* moteur, int speed)
 
     if (speed >= 0)
     {
-        Moteur_setDirection(moteur, MOTEUR_AVANCER);
+          Moteur_setDirection(moteur, MOTEUR_AVANCER);
         __HAL_TIM_SET_COMPARE(moteur->pwm_timer, moteur->channel, vitesse);
     }
     else
     {
-        Moteur_setDirection(moteur, MOTEUR_RECULER);
-        __HAL_TIM_SET_COMPARE(moteur->pwm_timer, moteur->channel, 8500-abs(vitesse));
+          Moteur_setDirection(moteur, MOTEUR_RECULER);
+        __HAL_TIM_SET_COMPARE(moteur->pwm_timer, moteur->channel, abs(vitesse));
     }
 }
 
@@ -67,20 +67,20 @@ void Moteur_recule(Moteur_HandleTypeDef* moteur)
 }
 void Robot_Start(h_Robot* robot)
 {
-	Moteur_start(robot->moteur_droite) ;
-	Moteur_start(robot->moteur_gauche) ;
+    Moteur_setSpeed(robot->moteur_droite, 120);
+    Moteur_setSpeed(robot->moteur_gauche, 80);
 	robot->direction = 'A' ;
 }
 void Robot_Stop(h_Robot* robot)
 {
 	Moteur_stop(robot->moteur_droite) ;
-	Moteur_stop(robot->moteur_droite) ;
+	Moteur_stop(robot->moteur_gauche) ;
 	robot->direction = 'S' ;
 }
 void Robot_Recule(h_Robot* robot)
 {
-	Moteur_recule(robot->moteur_droite) ;
-	Moteur_recule(robot->moteur_droite) ;
+    Moteur_setSpeed(robot->moteur_droite, -120);
+    Moteur_setSpeed(robot->moteur_gauche, -80);
 	robot->direction = 'R' ;
 }
 

@@ -316,6 +316,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 		vTaskNotifyGiveFromISR(modeTaskHandle, &xHigherPriorityTaskWoken);
 		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 	}
+
 	Moustache_HandleInterrupt(GPIO_Pin);
 }
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)

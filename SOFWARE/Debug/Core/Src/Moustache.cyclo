@@ -1,5 +1,5 @@
 ../Core/Src/Moustache.c:18:6:Moustache_Init	1
 ../Core/Src/Moustache.c:25:6:Moustache_HandleInterrupt	8
 ../Core/Src/Moustache.c:46:13:Bord	3
-../Core/Src/Moustache.c:54:13:CB_OUT1_Task	2
-../Core/Src/Moustache.c:73:13:CB_OUT2_Task	2
+../Core/Src/Moustache.c:55:13:CB_OUT1_Task	2
+../Core/Src/Moustache.c:74:13:CB_OUT2_Task	2

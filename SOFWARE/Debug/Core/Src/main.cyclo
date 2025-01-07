@@ -6,7 +6,7 @@
 ../Core/Src/main.c:277:6:modeChange	3
 ../Core/Src/main.c:295:6:TapDetected	2
 ../Core/Src/main.c:311:6:HAL_GPIO_EXTI_Callback	3
-../Core/Src/main.c:321:6:HAL_UART_RxCpltCallback	2
-../Core/Src/main.c:328:5:__io_putchar	1
-../Core/Src/main.c:343:6:HAL_TIM_PeriodElapsedCallback	2
-../Core/Src/main.c:360:6:Error_Handler	1
+../Core/Src/main.c:322:6:HAL_UART_RxCpltCallback	2
+../Core/Src/main.c:329:5:__io_putchar	1
+../Core/Src/main.c:344:6:HAL_TIM_PeriodElapsedCallback	2
+../Core/Src/main.c:361:6:Error_Handler	1

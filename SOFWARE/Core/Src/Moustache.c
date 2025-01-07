@@ -22,7 +22,7 @@ void Moustache_Init(void) {
 }
 
 // Gestion des interruptions GPIO
-void Moustache_HandleInterrupt(uint16_t GPIO_Pin) {
+void Moustache_HandleInterrupt(uint16_t GPIO_Pin){
     BaseType_t higherPriorityTaskWoken = pdFALSE;
 
     if (GPIO_Pin == CB_OUT1_Pin) {
@@ -49,6 +49,7 @@ static void Bord(void ) {
 	} else if (robot.direction == 'R') {
 		Robot_Start(&robot);
 	}
+	//Robot_Stop(&robot);
 }
 // Tâches pour traiter les interruptions
 static void CB_OUT1_Task(void *pvParameters)
