@@ -25,8 +25,8 @@
 // TIM 16 - Channel 1
 #define LIDAR_MOTOR_STOP 50
 #define LIDAR_MOTOR_NORMAL_SPEED 35
-
-#define LIDAR_DETECTION_RANGE 100
+#define LIDAR_BUFF_POINT_SIZE 360
+#define LIDAR_DETECTION_RANGE 10
 typedef enum {
     WAIT_HEADER_1,
     WAIT_HEADER_2,
@@ -36,7 +36,7 @@ typedef enum {
 typedef struct {
     float angle;
     float distance;
-    int isCorrect; // 0 ou 1 suivant le checksum
+
 } lidar_point_t;
 
 typedef struct {
@@ -54,10 +54,11 @@ typedef struct {
 
 
 void lidar_init(void);
-void readTrame(void) ;
-void lidar_process(void) ;
+void lidar_scan_loop(void);
+
 int lidar_checksum(const uint8_t* data, size_t len);
 lidar_point_t lidar_DataProcessing(lidar_trame_t lidar_trame);
 float lidar_calculatingDistance(uint8_t* data, int sample);
 float lidar_calculatingAngle(uint8_t FSA_data, uint8_t LSA_data, int samples, float distance);
+void LidarProcess(void);
 lidar_trame_t lidar_extractDataFromTrame(uint8_t* buffer);

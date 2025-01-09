@@ -1,8 +1,8 @@
-../Core/Src/lidar_X2_driver.c:23:6:lidar_init	8	static
-../Core/Src/lidar_X2_driver.c:34:6:lidar_process	1584	static
-../Core/Src/lidar_X2_driver.c:47:6:readTrame	8	static
-../Core/Src/lidar_X2_driver.c:108:15:lidar_DataProcessing	40	static
-../Core/Src/lidar_X2_driver.c:120:7:lidar_calculatingAngle	48	static
-../Core/Src/lidar_X2_driver.c:141:7:lidar_calculatingDistance	32	static
-../Core/Src/lidar_X2_driver.c:153:5:lidar_checksum	24	static
-../Core/Src/lidar_X2_driver.c:194:15:lidar_extractDataFromTrame	816	static
+../Core/Src/lidar_X2_driver.c:24:6:lidar_init	8	static
+../Core/Src/lidar_X2_driver.c:31:6:lidar_scan_loop	1576	static
+../Core/Src/lidar_X2_driver.c:53:15:lidar_DataProcessing	32	static
+../Core/Src/lidar_X2_driver.c:65:7:lidar_calculatingAngle	48	static
+../Core/Src/lidar_X2_driver.c:86:7:lidar_calculatingDistance	32	static
+../Core/Src/lidar_X2_driver.c:98:5:lidar_checksum	24	static
+../Core/Src/lidar_X2_driver.c:106:6:LidarProcess	8	static
+../Core/Src/lidar_X2_driver.c:202:15:lidar_extractDataFromTrame	816	static

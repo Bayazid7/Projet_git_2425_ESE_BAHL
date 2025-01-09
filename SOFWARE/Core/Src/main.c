@@ -19,7 +19,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "cmsis_os.h"
-#include "dma.h"
 #include "i2c.h"
 #include "tim.h"
 #include "usart.h"
@@ -121,7 +120,6 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_DMA_Init();
   MX_TIM1_Init();
   MX_TIM3_Init();
   MX_TIM4_Init();
@@ -142,7 +140,7 @@ int main(void)
 	//Create FreeRTOS tasks
 	xTaskCreate(lidarTask, "Lidar Task", 256, NULL, 2, &lidarTaskHandle);
 	xTaskCreate(ledBlinkTask, "LED Blink Task", 256, NULL,3, &ledBlinkTaskHandle);
-	xTaskCreate(task_angle, "Angle Task", 256, NULL, 4, &h_task_angle);
+	xTaskCreate(task_angle, "Angle Task", 256, NULL, 5, &h_task_angle);
 	xTaskCreate(modeChange, "mode", 128, NULL, 5, &modeTaskHandle);
 	xTaskCreate(TapDetected, "TapDetected", 128, NULL, 5, &TapDetected_task);
 
@@ -256,19 +254,18 @@ void task_angle(void *unused) {
 		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 
 		float angleSum = 0.0f;
-		uint16_t validPoints = 0;
+		uint16_t validPoints = lidar.point[0].Distance;
 
-		for (uint16_t i = 0; i < 360; ++i) {
-			if (lidar.point[i].Distance > 0) {
-				angleSum += lidar.point[i].Angle;
-				validPoints++;
+
+		for (uint16_t i = 1; i < 360; ++i) {
+			if ((lidar.point[i].Distance < validPoints )&& (lidar.point[i].Distance) !=0  ) {
+				//angleSum += lidar.point[i].Angle;
+				validPoints = lidar.point[i].Distance ;
+				angle = lidar.point[i].Angle ;
 			}
+			printf("le point %d a angle %f et diastance %f \r\n",i,lidar.point[i].Angle,lidar.point[i].Distance);
 		}
 
-		if (validPoints > 0) {
-			angle = angleSum / validPoints;
-		}
-		printf("angle = %f \n",angle) ;
 		Robot_setAngle(&robot, angle);
 	}
 }
@@ -300,7 +297,7 @@ void TapDetected(void *param) {
 		if (ulNotificationValue != 0) {
 			uint8_t buf;
 			HAL_I2C_Mem_Read(&hi2c1, ADXL343_ADDRESS, ADXL343_REG_INT_SOURCE,
-			I2C_MEMADD_SIZE_8BIT, &buf, 1, HAL_MAX_DELAY);
+					I2C_MEMADD_SIZE_8BIT, &buf, 1, HAL_MAX_DELAY);
 			Robot_Stop(&robot);
 		}
 	}
@@ -310,10 +307,16 @@ void TapDetected(void *param) {
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-	if(GPIO_Pin==CHAT_SOURIS_Pin)
+	if((GPIO_Pin==CHAT_SOURIS_Pin))
 	{
 		BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 		vTaskNotifyGiveFromISR(modeTaskHandle, &xHigherPriorityTaskWoken);
+		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+	}
+	else if((GPIO_Pin==INT2_Pin))
+	{
+		BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+		vTaskNotifyGiveFromISR(TapDetected_task, &xHigherPriorityTaskWoken);
 		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 	}
 

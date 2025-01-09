@@ -63,7 +63,7 @@ static void CB_OUT1_Task(void *pvParameters)
             //HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0); // Exemple d'action
         	Bord();
             // Simule une tâche longue
-            //vTaskDelay(pdMS_TO_TICKS(1000));
+            vTaskDelay(pdMS_TO_TICKS(1000));
 
             // Réinitialiser l'état pour permettre de détecter CB_OUT1 ou CB_OUT2 à nouveau
             exclusive_task = 0;
@@ -81,7 +81,7 @@ static void CB_OUT2_Task(void *pvParameters) {
            // HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_1); // Exemple d'action
         	Bord();
             // Simule une tâche longue
-            //vTaskDelay(pdMS_TO_TICKS(1000));
+            vTaskDelay(pdMS_TO_TICKS(1000));
 
             // Réinitialiser l'état pour permettre de détecter CB_OUT1 ou CB_OUT2 à nouveau
             exclusive_task = 0;
