@@ -48,6 +48,40 @@ Le robot est alimenté par une batterie **NIMH 7.2V 1.3Ah**. Cette tension est e
 - **Convertisseur 3.3V BU33SD5WG-TR** pour alimenter le STM32, l'accéléromètre, et les capteurs de position des moteurs.
 - **Convertisseur 5V  MP1475S** pour alimenter le LIDAR.
 ![image](https://github.com/user-attachments/assets/5129a2ce-9d91-417d-b867-39c3dd2bb6f5)
+
+---
+
+### **Drivers de moteurs PWM**
+
+Le robot est équipé de **deux moteurs DC**, chacun étant contrôlé par un driver PWM. Chaque driver reçoit des signaux PWM du STM32 pour réguler la vitesse et la direction des moteurs.
+
+- **Modèle des drivers** : ZXBM5210-SP-13
+- **Fonction principale** : Piloter les moteurs en avant ou en arrière grâce à des signaux PWM.
+- **Commandes PWM** : Les signaux PWM (Forward et Reverse) contrôlent la direction des moteurs. La vitesse est ajustée en modifiant le rapport cyclique du PWM.
+![image](https://github.com/user-attachments/assets/0cda02bc-fccc-41bd-a066-0c950e37ea76)
+
+### 4. **Accéléromètre ADXL343**
+
+L'accéléromètre **ADXL343** est utilisé pour détecter les chocs entre les robots. Il mesure l'accélération dans les trois axes et peut détecter des variations rapides, comme celles d'une collision.
+
+- **Communication** : Le module utilise le protocole **I2C** pour envoyer les données d'accélération au STM32.
+- **Fonction principale** : Détecter les impacts ou les vibrations et permettre une réaction rapide du robot (comme changer de direction ou ajuster son comportement).
+![image](https://github.com/user-attachments/assets/9bfa07b8-3d74-4790-9a44-6277851f2bb4)
+
+### 5. **LIDAR YDLIDAR X4**
+
+Le **LIDAR YDLIDAR X4** est utilisé pour scanner l'environnement autour du robot et déterminer la position des autres robots et des obstacles. 
+- **Type de capteur** : **LIDAR à balayage laser**.
+- **Portée** : Jusqu'à 12 mètres.
+- **Communication** : **UART**  pour transmettre les données de mesure.
+  
+---
+# Schema de cablage
+![image](https://github.com/user-attachments/assets/3b9caab8-d71d-4af7-be6f-68d475668fa8)
+![image](https://github.com/user-attachments/assets/5d58a721-86af-481f-8afd-4aa44524a779)
+
+## Software
+
 ### **Drivers de Moustache**
 ### **1. Fichier `Moustache.c`**-contient l'implémentation du pilote pour gérer les interruptions et les tâches liées à un système utilisant des capteurs "moustaches" pour détecter des bords.
 **Principales fonctions et variables :
@@ -81,7 +115,7 @@ Le robot est alimenté par une batterie **NIMH 7.2V 1.3Ah**. Cette tension est e
      - Elle effectue une action définie (appel de `Bord`).
      - Réinitialise `exclusive_task` à 0 pour permettre d'autres interruptions.
 
-### **2. Fichier `Moustache.h`**
+#### **2. Fichier `Moustache.h`**
 
 Ce fichier est l'en-tête associé, qui déclare les prototypes des fonctions et les dépendances nécessaires.
 
@@ -95,18 +129,7 @@ Ce fichier est l'en-tête associé, qui déclare les prototypes des fonctions et
    - `Moustache_Init(void)` : Initialisation du pilote et des tâches.
    - `Moustache_HandleInterrupt(uint16_t GPIO_Pin)` : Gestion des interruptions GPIO.
 
----
-
-### **Drivers de moteurs PWM**
-
-Le robot est équipé de **deux moteurs DC**, chacun étant contrôlé par un driver PWM. Chaque driver reçoit des signaux PWM du STM32 pour réguler la vitesse et la direction des moteurs.
-
-- **Modèle des drivers** : ZXBM5210-SP-13
-- **Fonction principale** : Piloter les moteurs en avant ou en arrière grâce à des signaux PWM.
-- **Commandes PWM** : Les signaux PWM (Forward et Reverse) contrôlent la direction des moteurs. La vitesse est ajustée en modifiant le rapport cyclique du PWM.
-![image](https://github.com/user-attachments/assets/0cda02bc-fccc-41bd-a066-0c950e37ea76)
-
-## 1.Fichier 'MoteurPWM.c' 
+### 1.Fichier 'MoteurPWM.c' 
 
 *La fonction Moteur_init: 
 
@@ -123,30 +146,6 @@ contrôle la direction du moteur en gérant les signaux PWM complémentaires ell
 Du côté du robot, Robot_Start initialise le mouvement en avant avec des vitesses asymétriques (120 pour la droite, 80 pour la gauche), tandis que Robot_Stop arrête les deux moteurs.Robot_Recule fait reculer le robot avec les mêmes vitesses que l'avance mais en négatif.
 
 ## 2.Fichier 'MoteurPWM.h' 
-
-
-
-### 4. **Accéléromètre ADXL343**
-
-L'accéléromètre **ADXL343** est utilisé pour détecter les chocs entre les robots. Il mesure l'accélération dans les trois axes et peut détecter des variations rapides, comme celles d'une collision.
-
-- **Communication** : Le module utilise le protocole **I2C** pour envoyer les données d'accélération au STM32.
-- **Fonction principale** : Détecter les impacts ou les vibrations et permettre une réaction rapide du robot (comme changer de direction ou ajuster son comportement).
-![image](https://github.com/user-attachments/assets/9bfa07b8-3d74-4790-9a44-6277851f2bb4)
-
-### 5. **LIDAR YDLIDAR X4**
-
-Le **LIDAR YDLIDAR X4** est utilisé pour scanner l'environnement autour du robot et déterminer la position des autres robots et des obstacles. 
-- **Type de capteur** : **LIDAR à balayage laser**.
-- **Portée** : Jusqu'à 12 mètres.
-- **Communication** : **UART**  pour transmettre les données de mesure.
-  
----
-# Schema de cablage
-![image](https://github.com/user-attachments/assets/3b9caab8-d71d-4af7-be6f-68d475668fa8)
-![image](https://github.com/user-attachments/assets/5d58a721-86af-481f-8afd-4aa44524a779)
-
-## Software
 ## Datasheets et sourcing des composants
 https://1drv.ms/x/s!AjphXEW6glNckYErezblGW1QHlP9SQ
 
