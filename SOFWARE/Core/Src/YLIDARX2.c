@@ -83,7 +83,7 @@ void process(h_LIDAR_t *h_LIDAR, uint16_t start, uint16_t end)
 
                 // Calcul des angles avec `idx`
                 Angle = calculAngle(h_LIDAR, Distance);
-                index = (uint16_t)(Angle);
+                index = (uint16_t)(Angle) % 360;
 
                 // Mise à jour des données des points
                 h_LIDAR->point[index].Distance = Distance;

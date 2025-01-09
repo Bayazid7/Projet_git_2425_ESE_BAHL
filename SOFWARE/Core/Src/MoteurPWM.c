@@ -68,7 +68,7 @@ void Moteur_recule(Moteur_HandleTypeDef* moteur)
 void Robot_Start(h_Robot* robot)
 {
     Moteur_setSpeed(robot->moteur_droite, 120);
-    Moteur_setSpeed(robot->moteur_gauche, 100);
+    Moteur_setSpeed(robot->moteur_gauche, 80);
 	robot->direction = 'A' ;
 }
 void Robot_Stop(h_Robot* robot)
@@ -80,7 +80,7 @@ void Robot_Stop(h_Robot* robot)
 void Robot_Recule(h_Robot* robot)
 {
     Moteur_setSpeed(robot->moteur_droite, -120);
-    Moteur_setSpeed(robot->moteur_gauche, -100);
+    Moteur_setSpeed(robot->moteur_gauche, -80);
 	robot->direction = 'R' ;
 }
 
@@ -97,7 +97,6 @@ void Robot_Init(h_Robot* robot ,Moteur_HandleTypeDef* moteurD,Moteur_HandleTypeD
 }
 
 void Robot_setAngle(h_Robot* robot, float angle)
-
 {
     //  Rotation pour atteindre l'angle spécifié
 	angle = angle*(2*PI/360) ;
@@ -124,7 +123,7 @@ void Robot_setAngle(h_Robot* robot, float angle)
     //  Avancer en ligne droite
     // Appliquer les vitesses des moteurs pour avancer
     Moteur_setSpeed(robot->moteur_droite, 120);
-    Moteur_setSpeed(robot->moteur_gauche, 100);
+    Moteur_setSpeed(robot->moteur_gauche, 80);
     robot->omega = 0;
     robot->vitesse = (robot->moteur_gauche->vitesse + robot->moteur_droite->vitesse )*0.5 ;
 }
