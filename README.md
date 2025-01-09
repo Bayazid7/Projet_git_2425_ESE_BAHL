@@ -51,7 +51,7 @@ Le robot est alimenté par une batterie **NIMH 7.2V 1.3Ah**. Cette tension est e
 
 ---
 
-### **Drivers de moteurs PWM**
+### 3. **Drivers de moteurs PWM**
 
 Le robot est équipé de **deux moteurs DC**, chacun étant contrôlé par un driver PWM. Chaque driver reçoit des signaux PWM du STM32 pour réguler la vitesse et la direction des moteurs.
 
