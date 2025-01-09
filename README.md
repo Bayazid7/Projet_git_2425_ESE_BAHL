@@ -8,7 +8,7 @@ Hedia WERHENI
 Hugo DEVAUX
 <br>
 Aliou LY
-
+<span style="color: red; font-weight: bold;">⚠️ ATTENTION : Modifiez à la bonne place les amis !</span>
 ## Introduction
 
 Ce projet a pour objectif de développer un **robot autonome** utilisant un **microcontrôleur STM32** pour la gestion de son comportement, tout en appliquant des principes de noyaux **temps réel** pour contrôler la communication entre ses composants matériels et logiciels. Ce robot sera capable de fonctionner en deux modes :
