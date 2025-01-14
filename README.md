@@ -132,6 +132,9 @@ Ce fichier est l'en-tête associé, qui déclare les prototypes des fonctions et
    - `Moustache_Init(void)` : Initialisation du pilote et des tâches.
    - `Moustache_HandleInterrupt(uint16_t GPIO_Pin)` : Gestion des interruptions GPIO.
 
+
+### **Drivers de Moteur**
+
 ### 1.Fichier 'MoteurPWM.c' 
 
 1. **La fonction Moteur_init:** 
