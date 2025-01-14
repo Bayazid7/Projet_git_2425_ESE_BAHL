@@ -69,13 +69,15 @@ L'accéléromètre **ADXL343** est utilisé pour détecter les chocs entre les r
 - **Fonction principale** : Détecter les impacts ou les vibrations et permettre une réaction rapide du robot (comme changer de direction ou ajuster son comportement).
 ![image](https://github.com/user-attachments/assets/9bfa07b8-3d74-4790-9a44-6277851f2bb4)
 
-### 5. **LIDAR YDLIDAR X4**
+### 5. **LIDAR YDLIDAR X2**
 
 Le **LIDAR YDLIDAR X4** est utilisé pour scanner l'environnement autour du robot et déterminer la position des autres robots et des obstacles. 
 - **Type de capteur** : **LIDAR à balayage laser**.
 - **Portée** : Jusqu'à 12 mètres.
 - **Communication** : **UART**  pour transmettre les données de mesure.
-  
+- **Protocole**  : Utilise une communication série avec un format de trame spécifique (en-tête 0x55AA).
+- **Résolution** : Distance : 0.25 mm (valeur brute divisée par 4) et Angle : 1/64° (0.015625°)
+
 ---
 # Schema de cablage
 ![image](https://github.com/user-attachments/assets/3b9caab8-d71d-4af7-be6f-68d475668fa8)
@@ -147,43 +149,31 @@ contrôle la direction du moteur en gérant les signaux PWM complémentaires ell
 Du côté du robot, Robot_Start initialise le mouvement en avant avec des vitesses asymétriques (120 pour la droite, 80 pour la gauche), tandis que Robot_Stop arrête les deux moteurs.Robot_Recule fait reculer le robot avec les mêmes vitesses que l'avance mais en négatif.
 
 ## 2.Fichier 'MoteurPWM.h' 
+
+
+## 3. Drivers Ylidar X2 (`lidar_X2_driver.c`)
+
+Le code du dirver implémente la gestion d'un capteur LiDAR YLIDAR X2 dans un système embarqué temps réel. Ci-dessous, les principaux aspects du fonctionnement du LiDAR :
+### Initialisation et réception des données
+La fonction `lidar_init()` initialise la communication UART avec le LiDAR en mode interruption. La réception des données se fait octet par octet via la fonction `readTrame()`, qui implémente une **machine à états** pour assembler les trames complètes.
+### Traitement des données
+Une fois une trame complète reçue, `lidar_process()` est appelée pour extraire et traiter les données :
+- `lidar_extractDataFromTrame()` décode la structure de la trame.
+- `lidar_DataProcessing()` calcule la distance et l'angle pour chaque point mesuré.
+- `lidar_calculatingDistance()` et `lidar_calculatingAngle()` effectuent les calculs spécifiques.
+
+### Intégration temps réel
+- Utilisation d'interruptions UART pour la réception asynchrone des données.
+- Traitement des données dans une tâche FreeRTOS dédiée (`lidarTask`).
+- Synchronisation avec d'autres tâches du système pour le contrôle du robot.
+
+### Pistes d'amélioration
+- Implémenter la vérification du checksum pour valider l'intégrité des données.
+- Optimiser le traitement des données pour réduire la charge CPU.
+- Ajouter des filtres pour améliorer la précision des mesures.
+- Implémenter une gestion d'erreurs plus robuste.
+
+
 ## Datasheets et sourcing des composants
 https://1drv.ms/x/s!AjphXEW6glNckYErezblGW1QHlP9SQ
 
-# Infos Lidar
-
-trame du YDLIDAR X4 se compose des éléments suivants :
-<br>
-- En-tête (2 octets) : Indique le début d'une nouvelle trame
-- Longueur des données (1 octet) : Taille des données qui suivent
-- Données de points (variable) : Informations sur chaque point mesuré
-- Checksum (2 octets) : Pour vérifier l'intégrité des données
-<br>
-(Pour chaque point)
-
-RQ: Utiliser un struct pour les données reçues
-
-
-# Rappels git
-
-## Les branches
-
-### Creér une branche
-``
-git checkout -b <nom de la branche>
-``
-
-### Changer de branche
-``
-git checkout <nom de la branche>
-``
- ## Commits et push
-!!! ATTENTION À LA BRANCHE OÙ L'ON SE TROVUE !!!
-```
-git add . 
-git commit -m "message de commit"
-git push
-```
-
-## Merge dans le main
-On utilise des PR (pull requests), on ne push jamais rien dans le `main`!
