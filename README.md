@@ -134,17 +134,20 @@ Ce fichier est l'en-tête associé, qui déclare les prototypes des fonctions et
 
 ### 1.Fichier 'MoteurPWM.c' 
 
-*La fonction Moteur_init: 
+1. **La fonction Moteur_init:** 
 
 Est responsable de l'initialisation d'un moteur en configurant ses paramètres de base. Elle prend en entrée un pointeur vers la structure du moteur, le timer PWM et le canal associé, initialisant la direction à l'arrêt et la vitesse à zéro.
 
-*Moteur_setSpeed:
+2. **Moteur_setSpeed:**
 gère la vitesse du moteur avec une conversion d'échelle, transformant une vitesse d'entrée (±290) en valeur PWM (0-8500) et configurant la direction appropriée.
 
-*Moteur_setDirection:
+3. **Moteur_setDirection:**
+
 contrôle la direction du moteur en gérant les signaux PWM complémentaires elle peut faire avancer, reculer ou arrêter le moteur en activant ou désactivant les canaux PWM appropriés.
 
-*Moteur_start, Moteur_stop et Moteur_recule sont des fonctions d'aide qui simplifient le contrôle du moteur en appelant Moteur_setDirection avec les paramètres appropriés.
+4 **Moteur_start, Moteur_stop et Moteur_recule**
+
+sont des fonctions d'aide qui simplifient le contrôle du moteur en appelant Moteur_setDirection avec les paramètres appropriés.
 
 Du côté du robot, Robot_Start initialise le mouvement en avant avec des vitesses asymétriques (120 pour la droite, 80 pour la gauche), tandis que Robot_Stop arrête les deux moteurs.Robot_Recule fait reculer le robot avec les mêmes vitesses que l'avance mais en négatif.
 
