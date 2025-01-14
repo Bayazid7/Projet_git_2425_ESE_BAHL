@@ -156,6 +156,12 @@ Du côté du robot, Robot_Start initialise le mouvement en avant avec des vitess
 
 ## 2.Fichier 'MoteurPWM.h' 
 
+c'est un fichier d’en-tête conçu pour gérer le contrôle des moteurs d’un robot. Il définit deux structures principales :
+
+1. **Moteur_HandleTypeDef :** utilisée pour représenter un moteur individuel, incluant ses paramètres essentiels comme le timer PWM associé (pwm_timer), le canal PWM (channel), la direction actuelle (direction) et la vitesse (vitesse).
+   
+2. **h_Robot :** utilisée pour représenter un robot comprenant deux moteurs (droit et gauche) et des paramètres globaux comme la vitesse linéaire, la vitesse angulaire, l’angle (theta) et le mode de fonctionnement.
+
 
 ## 3. Drivers Ylidar X2 (`lidar_X2_driver.c`)
 
