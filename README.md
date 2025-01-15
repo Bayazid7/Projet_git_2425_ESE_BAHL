@@ -9,7 +9,7 @@ Hugo DEVAUX
 <br>
 Aliou LY
 
-<span style="color: red; font-weight: bold;">⚠️ ATTENTION : Modifiez à la bonne place les amis !</span>
+
 ## Introduction
 
 Ce projet a pour objectif de développer un **robot autonome** utilisant un **microcontrôleur STM32** pour la gestion de son comportement, tout en appliquant des principes de noyaux **temps réel** pour contrôler la communication entre ses composants matériels et logiciels. Ce robot sera capable de fonctionner en deux modes :
@@ -192,4 +192,16 @@ Une fois une trame complète reçue, `lidar_process()` est appelée pour extrair
 
 ## Datasheets et sourcing des composants
 https://1drv.ms/x/s!AjphXEW6glNckYErezblGW1QHlP9SQ
+
+## Démonstrations du robot en marche:
+
+
+
+https://github.com/user-attachments/assets/f6af12cb-7911-474c-adf0-7a1f33a06a41
+
+
+
+https://github.com/user-attachments/assets/32c66e7f-6e20-4e83-ad37-8ae89d0b7e4e
+
+
 
