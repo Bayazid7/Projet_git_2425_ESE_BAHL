@@ -167,7 +167,7 @@ xTaskCreate(robotAngle, "Init Task", 256, NULL, 2, &setangleTaskHandle)  sert à
 
 utilise une pile de 256 mots, et a une priorité de 2. Le nom "Init Task" est utilisé pour identifier la tâche, et le handle setangleTaskHandle permet de la contrôler ultérieurement. Cette commande initialise efficacement la tâche pour qu'elle s'exécute dans le système.
 
-## 5 .Driver ADXL343 (`ADXL343.c`)
+## 4 .Driver ADXL343 (`ADXL343.c`)
 
 ## Introduction
 
@@ -195,7 +195,7 @@ Une fois l'accéléromètre configuré, le driver permet de récupérer les donn
 
 - **Utilisation de FreeRTOS** : Le driver fonctionne avec **FreeRTOS** pour gérer les tâches liées à la lecture des données du capteur et au traitement des événements. Une tâche dédiée `TapDetectedTask` est utilisée pour traiter les événements en temps réel.
 
-## 4. Drivers Ylidar X2 (`lidar_X2_driver.c`)
+## 5. Drivers Ylidar X2 (`lidar_X2_driver.c`)
 
 Le code du dirver implémente la gestion d'un capteur LiDAR YLIDAR X2 dans un système embarqué temps réel. Ci-dessous, les principaux aspects du fonctionnement du LiDAR :
 ### Initialisation et réception des données
