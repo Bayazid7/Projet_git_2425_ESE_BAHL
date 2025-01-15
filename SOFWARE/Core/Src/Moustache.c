@@ -43,7 +43,8 @@ void Moustache_HandleInterrupt(uint16_t GPIO_Pin){
     portYIELD_FROM_ISR(higherPriorityTaskWoken);
 }
 
-static void Bord(void ) {
+static void Bord(void )
+{
 	if (robot.direction == 'A') {
 		Robot_Recule(&robot);
 	} else if (robot.direction == 'R') {
@@ -61,9 +62,10 @@ static void CB_OUT1_Task(void *pvParameters)
             // Action pour CB_OUT1
             //printf("CB_OUT1 Detected\r\n");
             //HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0); // Exemple d'action
-        	Bord();
+
+        	Robot_Start(&robot);
             // Simule une tâche longue
-            //vTaskDelay(pdMS_TO_TICKS(1000));
+            vTaskDelay(pdMS_TO_TICKS(500));
 
             // Réinitialiser l'état pour permettre de détecter CB_OUT1 ou CB_OUT2 à nouveau
             exclusive_task = 0;
@@ -71,7 +73,8 @@ static void CB_OUT1_Task(void *pvParameters)
     }
 }
 
-static void CB_OUT2_Task(void *pvParameters) {
+static void CB_OUT2_Task(void *pvParameters)
+{
     uint32_t notificationValue = 0;
     for (;;) {
         // Attend une notification
@@ -79,9 +82,9 @@ static void CB_OUT2_Task(void *pvParameters) {
             // Action pour CB_OUT2
             //printf("CB_OUT2 Detected\r\n");
            // HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_1); // Exemple d'action
-        	Bord();
+        	Robot_Recule(&robot);
             // Simule une tâche longue
-            //vTaskDelay(pdMS_TO_TICKS(1000));
+            vTaskDelay(pdMS_TO_TICKS(500));
 
             // Réinitialiser l'état pour permettre de détecter CB_OUT1 ou CB_OUT2 à nouveau
             exclusive_task = 0;

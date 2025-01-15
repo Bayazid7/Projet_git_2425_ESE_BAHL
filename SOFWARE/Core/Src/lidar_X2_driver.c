@@ -5,9 +5,11 @@
 uint8_t rxBuffer[BUFFER_SIZE];
 uint8_t lidarBuffer[BUFFER_SIZE];
 uint8_t rxByte;
+float lidar_point[SIZE_POINT] ;
 static int rxIndex = 0;
 HAL_StatusTypeDef status;
 int lidarInitFlag = 0;
+int receiveCompleted = 0;
 uint8_t currentSpeed = 50;
 
 lidar_point_t point = {0};
@@ -16,93 +18,24 @@ Lidar_RxState_t state = WAIT_HEADER_1;
 
 static volatile uint32_t callback_count = 0;
 
-static uint8_t prev_byte = 0;
-static uint8_t potential_header = 0;
+
 
 
 void lidar_init(void) {
-
-	while(!lidarInitFlag)
-	{
-		status = HAL_UART_Receive_IT(&huart3, &rxByte, 1);
-		lidarInitFlag = 1;
-	}
-
-
+    HAL_UART_Receive_IT(&huart3, &rxByte, 1);
+    printf("Lidar init success\r\n");
 }
+
 
 void lidar_process(void)
 {
-	lidar_trame = lidar_extractDataFromTrame(lidarBuffer);
-	point = lidar_DataProcessing(lidar_trame);
-	if (point.distance)
-	{
-		printf("Distance: %.2f mm, Angle: %.2f°\r\n",
-				point.distance,
-				point.angle);
-
-	}
-}
-
-void readTrame(void)
-{
-	switch(state) {
-	case WAIT_HEADER_1:
-		if(rxByte == HEADER_BYTE1) {
-			state = WAIT_HEADER_2;
-			rxIndex = 0;
-			rxBuffer[rxIndex++] = rxByte;  // Store header1
-		}
-		break;
-
-	case WAIT_HEADER_2:
-		if(rxByte == HEADER_BYTE2) {
-			rxBuffer[rxIndex++] = rxByte;  // Store header2
-			state = RECEIVE_DATA;
-		} else {
-			state = WAIT_HEADER_1;
-			rxIndex = 0;
-		}
-		break;
-
-	case RECEIVE_DATA:
-		if(rxByte == HEADER_BYTE1) {
-			prev_byte = rxByte;
-			potential_header = 1;
-		}
-		// Check pour le second byte du header
-		else if(potential_header && rxByte == HEADER_BYTE2 && prev_byte == HEADER_BYTE1) {
-			// On a trouvé une nouvelle séquence de header complète
-			if(rxIndex > 2) {  // Sauvegarder seulement si on a des données
-				memcpy(lidarBuffer, rxBuffer, rxIndex - 1); // -1 car on ne veut pas le HEADER_BYTE1
-				lidar_process() ;
-			}
-			// Démarrer un nouveau buffer avec le header
-			state = RECEIVE_DATA;
-			rxIndex = 0;
-			rxBuffer[rxIndex++] = HEADER_BYTE1;
-			rxBuffer[rxIndex++] = HEADER_BYTE2;
-			potential_header = 0;
-		}
-		else {
-			// Si c'était un faux HEADER_BYTE1
-			if(potential_header && rxByte != HEADER_BYTE2) {
-				potential_header = 0;
-			}
-			rxBuffer[rxIndex++] = rxByte;
-
-			if(rxIndex >= BUFFER_SIZE) {
-				state = WAIT_HEADER_1;
-				rxIndex = 0;
-			}
-		}
-		break;
-	}
-
-	prev_byte = rxByte;
-	HAL_UART_Receive_IT(&huart3, &rxByte, 1);
-
-
+    lidar_trame_t lidar_trame = lidar_extractDataFromTrame(lidarBuffer);
+    lidar_point_t point = lidar_DataProcessing(lidar_trame);
+    if (point.distance != 0 && point.isCorrect)
+    {
+    	lidar_point[(int)point.angle]=point.distance ;
+        printf("Distance: %.2f mm, Angle: %.2f°\r\n", point.distance, point.angle);
+    }
 }
 
 lidar_point_t lidar_DataProcessing(lidar_trame_t lidar_trame)
@@ -117,27 +50,65 @@ lidar_point_t lidar_DataProcessing(lidar_trame_t lidar_trame)
 	return pointTemp;
 }
 
-float lidar_calculatingAngle(uint8_t FSA_data, uint8_t LSA_data, int samples, float distance)
+
+int readTrame(uint8_t *byte)
 {
+    static Lidar_RxState_t state = WAIT_HEADER_1;
+    static int rxIndex = 0;
+    static uint8_t potential_header = 0;
+    static uint8_t prev_byte = 0;
 
-	float angleFSA = ((uint16_t)FSA_data >> 1) / 64.0f;
-	float angleLSA = ((uint16_t)LSA_data >> 1) / 64.0f;
+    switch(state) {
+        case WAIT_HEADER_1:
+            if(*byte == HEADER_BYTE1) {
+                state = WAIT_HEADER_2;
+                rxIndex = 0;
+                rxBuffer[rxIndex++] = *byte;
+            }
+            break;
 
-	float angle_diff = angleLSA - angleFSA;
-	if(angle_diff < 0) {
-		angle_diff += 360.0f;
-	}
+        case WAIT_HEADER_2:
+            if(*byte == HEADER_BYTE2) {
+                rxBuffer[rxIndex++] = *byte;
+                state = RECEIVE_DATA;
+            } else {
+                state = WAIT_HEADER_1;
+                rxIndex = 0;
+            }
+            break;
 
-	float angle = angleFSA + (angle_diff / 2.0f);
+        case RECEIVE_DATA:
+            if(*byte == HEADER_BYTE1) {
+                prev_byte = *byte;
+                potential_header = 1;
+            } else if(potential_header && *byte == HEADER_BYTE2 && prev_byte == HEADER_BYTE1) {
+                if(rxIndex > 2) {
+                    memcpy(lidarBuffer, rxBuffer, rxIndex - 1);
+                    state = RECEIVE_DATA;
+                    rxIndex = 0;
+                    rxBuffer[rxIndex++] = HEADER_BYTE1;
+                    rxBuffer[rxIndex++] = HEADER_BYTE2;
+                    potential_header = 0;
+                    return 1; // Trame complete
+                }
+            } else {
+                if(potential_header && *byte != HEADER_BYTE2) {
+                    potential_header = 0;
+                }
+                rxBuffer[rxIndex++] = *byte;
+                if(rxIndex >= BUFFER_SIZE) {
+                    state = WAIT_HEADER_1;
+                    rxIndex = 0;
+                }
+            }
+            break;
+    }
 
-	if(distance != 0) {
-		float angCorrect = atan2f(21.8f * (155.3f - distance),
-				155.3f * distance) * 180.0f / 3.14159f;
-		return angle + angCorrect;
-	}
-
-	return angle;
+    prev_byte = *byte;
+    return 0;
 }
+
+
 float lidar_calculatingDistance(uint8_t* data, int sample)
 {
 	float sum = 0;
@@ -150,6 +121,28 @@ float lidar_calculatingDistance(uint8_t* data, int sample)
 	return sum / sample;
 }
 
+float lidar_calculatingAngle(uint8_t FSA_data, uint8_t LSA_data, int samples, float distance)
+{
+
+	float angleFSA = ((uint16_t)FSA_data >> 1) / 64.0f;
+	float angleLSA = ((uint16_t)LSA_data >> 1) / 64.0f;
+
+	float angle_diff = angleLSA - angleFSA;
+	if(angle_diff < 0) {
+	angle_diff += 360.0f;
+	}
+
+	float angle = angleFSA + (angle_diff / 2.0f);
+
+	if(distance != 0) {
+		float angCorrect = atan2f(21.8f * (155.3f - distance),
+				155.3f * distance) * 180.0f / 3.14159f;
+		return angle + angCorrect;
+	}
+
+	return angle;
+}
+
 int lidar_checksum(const uint8_t* data, size_t len)
 {
 	uint16_t checksum = 0;
@@ -158,38 +151,6 @@ int lidar_checksum(const uint8_t* data, size_t len)
 	}
 	return checksum == (data[len-2] | (data[len-1] << 8));
 }
-
-
-/*
-
-int lidar_setSpeed(uint8_t speed)
-{
-	if (speed >= currentSpeed)
-	{
-		while(currentSpeed != speed)
-		{
-			htim16.Instance->CCR1=(4250-1)*currentSpeed/100;
-			htim16.Instance->CCR2=(4250-1)*(100-currentSpeed)/100;
-			currentSpeed++;
-			HAL_Delay(100);
-
-		}
-	}
-	else if (speed <= currentSpeed)
-	{
-		while(currentSpeed != speed)
-		{
-			htim16.Instance->CCR1=(4250-1)*currentSpeed/100;
-			htim16.Instance->CCR2=(4250-1)*(100-currentSpeed)/100;
-			currentSpeed--;
-			HAL_Delay(100);
-		}
-	}
-	return currentSpeed;
-}
- */
-
-
 
 lidar_trame_t lidar_extractDataFromTrame(uint8_t* buffer) {
 	lidar_trame_t lidar_trame = {0};

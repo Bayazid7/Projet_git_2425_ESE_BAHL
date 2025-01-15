@@ -17,7 +17,7 @@
 #define LIDAR_START_FLAG2    0x5A
 #define LIDAR_POINT_PER_PACK 40
 #define MAX_LSN 256
-
+#define SIZE_POINT 360
 #define HEADER_BYTE1  0xAA
 #define HEADER_BYTE2  0x55
 
@@ -26,7 +26,7 @@
 #define LIDAR_MOTOR_STOP 50
 #define LIDAR_MOTOR_NORMAL_SPEED 35
 
-#define LIDAR_DETECTION_RANGE 100
+#define LIDAR_DETECTION_RANGE 0
 typedef enum {
     WAIT_HEADER_1,
     WAIT_HEADER_2,
@@ -54,7 +54,7 @@ typedef struct {
 
 
 void lidar_init(void);
-void readTrame(void) ;
+int readTrame(uint8_t *byte);
 void lidar_process(void) ;
 int lidar_checksum(const uint8_t* data, size_t len);
 lidar_point_t lidar_DataProcessing(lidar_trame_t lidar_trame);

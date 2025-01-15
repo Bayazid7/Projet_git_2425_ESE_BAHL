@@ -13,7 +13,7 @@ void Moteur_init(Moteur_HandleTypeDef* moteur, TIM_HandleTypeDef* timer, uint32_
 
 void Moteur_setSpeed(Moteur_HandleTypeDef* moteur, int speed)
 {
-    int vitesse = (int)(speed *8500 / 290);
+    int vitesse = (int)(speed *8500 / 500);
     moteur->vitesse = speed;
 
     if (speed >= 0)
@@ -67,8 +67,8 @@ void Moteur_recule(Moteur_HandleTypeDef* moteur)
 }
 void Robot_Start(h_Robot* robot)
 {
-    Moteur_setSpeed(robot->moteur_droite, 120);
-    Moteur_setSpeed(robot->moteur_gauche, 80);
+    Moteur_setSpeed(robot->moteur_droite, 140);
+    Moteur_setSpeed(robot->moteur_gauche, 180);
 	robot->direction = 'A' ;
 }
 void Robot_Stop(h_Robot* robot)
@@ -79,8 +79,8 @@ void Robot_Stop(h_Robot* robot)
 }
 void Robot_Recule(h_Robot* robot)
 {
-    Moteur_setSpeed(robot->moteur_droite, -120);
-    Moteur_setSpeed(robot->moteur_gauche, -80);
+    Moteur_setSpeed(robot->moteur_droite, -140);
+    Moteur_setSpeed(robot->moteur_gauche, -180);
 	robot->direction = 'R' ;
 }
 
@@ -99,7 +99,7 @@ void Robot_Init(h_Robot* robot ,Moteur_HandleTypeDef* moteurD,Moteur_HandleTypeD
 void Robot_setAngle(h_Robot* robot, float angle)
 {
     //  Rotation pour atteindre l'angle spécifié
-	angle = angle*(2*PI/360) ;
+	angle = angle;
     robot->omega = (2.0 / Ts) * (angle - robot->theta) + robot->omega;
     robot->moteur_droite->vitesse =robot->vitesse + robot->omega * L / 2.0;
     robot->moteur_gauche->vitesse = robot->vitesse - robot->omega * L / 2.0;
@@ -115,15 +115,15 @@ void Robot_setAngle(h_Robot* robot, float angle)
     Moteur_setSpeed(robot->moteur_gauche, (int)robot->moteur_gauche->vitesse);
 
     // Attendre que l'angle soit atteint
-    HAL_Delay(1);
+    HAL_Delay(200);
 
     // Mettre à jour l'angle courant
     robot->theta = angle;
 
     //  Avancer en ligne droite
     // Appliquer les vitesses des moteurs pour avancer
-    Moteur_setSpeed(robot->moteur_droite, 120);
-    Moteur_setSpeed(robot->moteur_gauche, 80);
+    Moteur_setSpeed(robot->moteur_droite, 140);
+    Moteur_setSpeed(robot->moteur_gauche, 180);
     robot->omega = 0;
     robot->vitesse = (robot->moteur_gauche->vitesse + robot->moteur_droite->vitesse )*0.5 ;
 }
