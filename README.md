@@ -167,7 +167,7 @@ xTaskCreate(robotAngle, "Init Task", 256, NULL, 2, &setangleTaskHandle)  sert à
 
 utilise une pile de 256 mots, et a une priorité de 2. Le nom "Init Task" est utilisé pour identifier la tâche, et le handle setangleTaskHandle permet de la contrôler ultérieurement. Cette commande initialise efficacement la tâche pour qu'elle s'exécute dans le système.
 
-## 5 .Driver ADXL343 (`ADXL343_driver.c`)
+## 5 .Driver ADXL343 (`ADXL343.c`)
 
 ## Introduction
 
