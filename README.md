@@ -162,7 +162,7 @@ c'est un fichier d’en-tête conçu pour gérer le contrôle des moteurs d’un
    
 2. **h_Robot :** utilisée pour représenter un robot comprenant deux moteurs (droit et gauche) et des paramètres globaux comme la vitesse linéaire, la vitesse angulaire, l’angle (theta) et le mode de fonctionnement.
 
-pour que en peux controlé l'angle de lidar nous allonsutulisé La fonction : 
+pour que en peux controlé l'angle de lidar nous allons utulisé La fonction : 
 xTaskCreate(robotAngle, "Init Task", 256, NULL, 2, &setangleTaskHandle)  sert à créer une tâche dans un système RTOS. Cette tâche exécute la fonction robotAngle telque: 
 
 utilise une pile de 256 mots, et a une priorité de 2. Le nom "Init Task" est utilisé pour identifier la tâche, et le handle setangleTaskHandle permet de la contrôler ultérieurement. Cette commande initialise efficacement la tâche pour qu'elle s'exécute dans le système.
