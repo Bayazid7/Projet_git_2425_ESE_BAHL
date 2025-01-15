@@ -148,7 +148,7 @@ gère la vitesse du moteur avec une conversion d'échelle, transformant une vite
 
 contrôle la direction du moteur en gérant les signaux PWM complémentaires elle peut faire avancer, reculer ou arrêter le moteur en activant ou désactivant les canaux PWM appropriés.
 
-4 **Moteur_start, Moteur_stop et Moteur_recule**
+4. **Moteur_start, Moteur_stop et Moteur_recule:**
 
 sont des fonctions d'aide qui simplifient le contrôle du moteur en appelant Moteur_setDirection avec les paramètres appropriés.
 
@@ -162,8 +162,9 @@ c'est un fichier d’en-tête conçu pour gérer le contrôle des moteurs d’un
    
 2. **h_Robot :** utilisée pour représenter un robot comprenant deux moteurs (droit et gauche) et des paramètres globaux comme la vitesse linéaire, la vitesse angulaire, l’angle (theta) et le mode de fonctionnement.
 
-pour que en peux controlé l'angle de lidar nous allonsutulisé La fonction xTaskCreate(robotAngle, "Init Task", 256, NULL, 2, &setangleTaskHandle) sert à créer une tâche dans un système RTOS. 
-Cette tâche exécute la fonction robotAngle, utilise une pile de 256 mots, et a une priorité de 2. Le nom "Init Task" est utilisé pour identifier la tâche, et le handle setangleTaskHandle permet de la contrôler ultérieurement. Cette commande initialise efficacement la tâche pour qu'elle s'exécute dans le système.
+pour que en peux controlé l'angle de lidar nous allonsutulisé La fonction : 
+xTaskCreate(robotAngle, "Init Task", 256, NULL, 2, &setangleTaskHandle)sert à créer une tâche dans un système RTOS. Cette tâche exécute la fonction robotAngle telque: 
+utilise une pile de 256 mots, et a une priorité de 2. Le nom "Init Task" est utilisé pour identifier la tâche, et le handle setangleTaskHandle permet de la contrôler ultérieurement. Cette commande initialise efficacement la tâche pour qu'elle s'exécute dans le système.
 
 ## 3. Drivers Ylidar X2 (`lidar_X2_driver.c`)
 
