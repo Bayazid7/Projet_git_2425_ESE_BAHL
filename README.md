@@ -167,7 +167,35 @@ xTaskCreate(robotAngle, "Init Task", 256, NULL, 2, &setangleTaskHandle)  sert à
 
 utilise une pile de 256 mots, et a une priorité de 2. Le nom "Init Task" est utilisé pour identifier la tâche, et le handle setangleTaskHandle permet de la contrôler ultérieurement. Cette commande initialise efficacement la tâche pour qu'elle s'exécute dans le système.
 
-## 3. Drivers Ylidar X2 (`lidar_X2_driver.c`)
+## 5 .Driver ADXL343 (`ADXL343_driver.c`)
+
+## Introduction
+
+Le driver **ADXL343** permet de gérer un accéléromètre **ADXL343** dans un système embarqué en temps réel. Ce capteur mesure l'accélération sur trois axes (X, Y, Z) et est utilisé pour détecter des événements comme les chocs. Ce driver est conçu pour intégrer les fonctionnalités du capteur avec **FreeRTOS**.
+
+
+### 1. **Initialisation et Configuration du Capteur**
+
+Le driver initialise le **capteur ADXL343** en configurant les registres nécessaires pour le fonctionnement de l'accéléromètre. Cela inclut la configuration de la plage de mesures, des seuils de tapotement, et des interruptions.
+
+- **Initialisation de l'I2C** : La fonction `ADXL343_Init()` initialise la communication I2C avec le capteur, vérifie l'identifiant du dispositif et configure les registres pour la lecture des données d'accélération.
+- **Configuration des Interrups** : Le capteur est configuré pour détecter des événements sur les axes X et Y, en activant les interruptions pour ces axes.
+- **Configuration du Format des Données** : Le capteur est configuré pour un mode de résolution complète avec une plage de ±16g, ce qui est adapté pour de nombreuses applications.
+
+### 2. **Réception et Traitement des Données**
+
+Une fois l'accéléromètre configuré, le driver permet de récupérer les données d'accélération en temps réel.
+- **Traitement des Interruptions** : Le driver utilise des interruptions pour détecter des événements de tapotement (tap) sur les axes X et Y.
+
+### 3. **Gestion des Interruptions**
+
+- **Gestion des Interruptions Tap** : Le capteur est configuré pour activer les interruptions uniquement pour les axes X et Y, en désactivant l'axe **Z** qui peut souvent générer des interruptions indésirables.
+  
+### 4. **Intégration en Temps Réel** ⏱️
+
+- **Utilisation de FreeRTOS** : Le driver fonctionne avec **FreeRTOS** pour gérer les tâches liées à la lecture des données du capteur et au traitement des événements. Une tâche dédiée `TapDetectedTask` est utilisée pour traiter les événements en temps réel.
+
+## 4. Drivers Ylidar X2 (`lidar_X2_driver.c`)
 
 Le code du dirver implémente la gestion d'un capteur LiDAR YLIDAR X2 dans un système embarqué temps réel. Ci-dessous, les principaux aspects du fonctionnement du LiDAR :
 ### Initialisation et réception des données
